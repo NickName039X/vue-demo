@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <canvas id="canvas2" width="800" height="400"></canvas>
+    </body>
+
+</html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    canvas {
+
+        /* background:red */
+        border: 1px solid #999;
+        display: block;
+    }
+</style>
+<script>
+    /*
+    绘制笑脸
+    弧度的定义：一个角对应的弧长与半径的比值就是弧度。2π = 360°
+    如果想看到连续的线，请移除moveTo
+    */
+
+    var canvas2 = document.getElementById("canvas2");
+    var ctx = canvas2.getContext("2d");
+    ctx.translate(100, 100);
+    // window.requestAnimationFrame(draw);
+    setInterval(draw, 1000);
+
+    function draw() {
+        ctx.save();
+        ctx.clearRect(0, 0, canvas2.width, canvas2.height); // clear canvas
+        ctx.fillStyle = "lightblue";
+        ctx.fillRect(100, 100, 150, 150); //填充
+        for (let i = 1; i < 12; i++)
+        {
+
+            ctx.rotate(Math.PI * i / 12);
+            ctx.beginPath();
+            ctx.arc(100, i*12, 5, 0, Math.PI * 2, true);
+            ctx.fill();
+        }
+        // ctx.restore();
+    }
+</script>

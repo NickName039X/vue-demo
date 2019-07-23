@@ -11,6 +11,7 @@
     <body>
         <canvas id="mycanvas" width="800" height="400"></canvas>
         <canvas id="canvas2" width="800" height="400"></canvas>
+        <canvas id="canvas3" width="800" height="200"></canvas>
     </body>
 
 </html>
@@ -24,6 +25,7 @@
 
         /* background:red */
         border: 1px solid #999;
+        display: block;
     }
 
     #canvas2 {
@@ -33,7 +35,7 @@
         */
         /* width: 1000px;
         height: 500px; */
-        display: block;
+        /* display: block; */
     }
 </style>
 <script>
@@ -105,5 +107,21 @@
     ctx2.moveTo(125, 85);
     ctx2.arc(120, 85, 5, 0, Math.PI * 2, true);  // 右眼
     ctx2.stroke();
+
+
+    /* canvas3 */
+
+    //贝塞尔曲线
+    var canvas3 = document.getElementById("canvas3");
+    var ctx3 = canvas3.getContext('2d');
+    ctx3.beginPath();
+    ctx3.moveTo(75, 25);
+    ctx3.quadraticCurveTo(25, 25, 25, 62.5);
+    ctx3.quadraticCurveTo(25, 100, 50, 100);
+    ctx3.quadraticCurveTo(50, 120, 30, 125);
+    ctx3.quadraticCurveTo(60, 120, 65, 100);
+    ctx3.quadraticCurveTo(125, 100, 125, 62.5);
+    ctx3.quadraticCurveTo(125, 25, 75, 25);
+    ctx3.stroke();
 
 </script>
