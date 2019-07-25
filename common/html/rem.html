@@ -7,8 +7,12 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
     </head>
+
     <body>
         <div>轮播图管理</div>
+        <div class="content">
+            <div class="left"><span>做了一辈子的农民</span></div>
+        </div>
     </body>
 
 </html>
@@ -23,5 +27,18 @@
         /* Pixel Fallback */
         font-size: 1.6rem;
         /* Font-sizing with rem unit */
+    }
+
+    .content{
+        clear: both;
+        position: relative;
+        height: 240px;
+        zoom:1;
+    }
+
+    .left {
+        float: left;
+        height: 50%;
+        margin-bottom: -120px;
     }
 </style>
