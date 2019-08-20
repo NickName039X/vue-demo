@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>vanxkr - 价格趋势</title>
+        <style>
+            #main {
+                width: 100%;
+                /* //height:50%; */
+                text-align: center;
+            }
+
+            #container {
+                /* //top: 10px; */
+                width: 85%;
+                height: 100%;
+                margin: 0 auto;
+            }
+
+            #url {
+                height: 200px;
+                width: 60%;
+                font-size: 20px;
+                padding-left: 10px;
+            }
+
+            input::-webkit-input-placeholder {
+                color: #BBB;
+            }
+
+            input::-moz-input-placeholder {
+                color: #BBB;
+            }
+
+            input::-ms-input-placeholder {
+                color: #BBB;
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+
+    <body style="height: 1000px; margin: 0">
+        <div id="main">
+            <textarea type="text" name="url" id="url" style="width: 80%"></textarea>
+            <div id="container"></div>
+        </div>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+        <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+        <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+        <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+        <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+        <script type="text/javascript">
+            function RefreshUi(datas) {
+                var dom = document.getElementById("container");
+                dom.style.height = String(datas.time.length * 12) + 'px';
+                var myChart = echarts.init(dom);
+                var app = {};
+                option = null;
+                option = {
+                    grid: {
+                        left: '20px',
+                        right: '20px',
+                        top: '20px',
+                        bottom: '20px',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'value',
+                        show: false,
+                        axisLabel: {
+                            formatter: '{value} 元'
+                        }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        axisLine: { onZero: false },
+                        axisLabel: {
+                            formatter: '{value}'
+                        },
+                        boundaryGap: true,
+                        data: datas.time
+                    },
+                    // legend: {
+                    //     //设置图例
+                    //     data:['播放次数', '广告主数', '预估收益'],
+                    //     //设置右对齐
+                    //     left:'right'
+                    // },
+                    series: [
+
+                        {
+                            name: '价格趋势图',
+                            type: 'line',
+                            smooth: true,
+                            lineStyle: {
+                                normal: {
+                                    width: 3,
+                                    shadowColor: 'rgba(0,0,0,0.4)',
+                                    shadowBlur: 10,
+                                    shadowOffsetY: 10
+                                }
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'left',
+                                    formatter: '{c}'
+                                }
+                            },
+                            data: datas.price,
+                            // itemStyle : { normal: {label : {show: true}}},
+                        }
+                    ]
+                };;
+                if (option && typeof option === "object")
+                {
+                    myChart.setOption(option, true);
+                }
+            }
+            function jgqs() {
+                var url = document.getElementById("url").value;
+                if (!url)
+                {
+                    alert("请先输入商品链接");
+                } else
+                {
+                    $.ajax({
+                        type: "GET",
+                        url: 'http://api.vanxkr.com/jgqs?url=' + url,
+                        success: function (json_data) {
+                            if (1 == json_data.ok)
+                            {
+                                RefreshUi(json_data.datas);
+                            } else
+                            {
+                            }
+                        },
+                        error: function (error_text) {
+                            // alter.log('发生了错误 请联系: vanxkr@qq.com');
+                        }
+                    });
+                }
+            }
+            $("#url").keydown(function (e) {
+                if (e.keyCode == 13)
+                {
+                    jgqs();
+                }
+            });
+        </script>
+    </body>
+
+</html>
