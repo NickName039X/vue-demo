@@ -19,6 +19,8 @@ let myobj2 = Object();
 let obj1 = new Object('bnb');
 let obj2 = Object('arm');
 
+//=====================================================================
+
 function doSomething() {}
 doSomething.prototype.foo = 'bar'; // add a property onto the prototype
 var doSomeInstancing = new doSomething();
@@ -28,7 +30,7 @@ console.log(doSomeInstancing);
 doSomething.__proto__ === Function.prototype; //true
 Function.prototype.__proto__ === Object.prototype; //true
 doSomething.__proto__.__proto__ === Object.prototype; //true
-doSomething.__proto__.__proto__.__proto__ === Object.prototype; //true
+doSomething.__proto__.__proto__.__proto__ === null; //true
 
 doSomething.__proto__.__proto__ === doSomeInstancing.__proto__.__proto__; //true  Object.prototype
 doSomething.__proto__ === doSomeInstancing.__proto__; //false
