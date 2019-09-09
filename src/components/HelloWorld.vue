@@ -1,9 +1,7 @@
 <template>
-    <div class="hello">
-        <h1>{{ msg }}</h1>
-		<ul>
-			<li class="x">HelloWorld</li>
-		</ul>
+    <div>
+        <router-link to="/"></router-link>
+        <router-view/>
     </div>
 </template>
 
