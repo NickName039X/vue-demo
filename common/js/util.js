@@ -1,7 +1,9 @@
-
+/**
+ * 返回文档在窗口左上角水平和垂直方向滚动的像素
+ */
 function getScrollOffset() {
 
-    if (window.pageXOffset) {
+    if (window.pageXOffset) {//ie9及以上支持该属性
         return {
             x: window.pageXOffset,
             y: window.pageYOffset
@@ -14,8 +16,11 @@ function getScrollOffset() {
     }
 }
 
+/**
+ * 获取窗口的高度与宽度(不包含工具条与滚动条)
+ */
 function getViewportOffset() {
-    if (window.innerWidth) {
+    if (window.innerWidth) { // ie9及以上支持该属性
         return {
             w: window.innerWidth,
             h: window.innerHeight

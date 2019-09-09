@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <div>我是Parent</div>
+        <div>Parent组件</div>
         <Child
             :visible.sync="show"
-            name="我是小李"
-            msg="hello MrLi"
+            name="小李"
+            msg="xiaoli"
             age="20"
             maxlength="10"
             v-bind="$attrs"

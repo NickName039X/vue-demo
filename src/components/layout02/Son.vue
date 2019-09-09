@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    name: "Parent", //组件名
+    name: "Son", //组件名
     data() {
         return {};
     },
@@ -19,7 +19,7 @@ export default {
         console.log("Son==================", this.$attrs);
     },
     methods: {
-        
+
     }
 };
 </script>

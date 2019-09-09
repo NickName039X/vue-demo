@@ -2,10 +2,8 @@
     <div class="hello">
         <h1>{{ msg }}</h1>
 		<ul>
-			<li class="x">hello组件</li>
-			<li class="x">hello组件</li>
+			<li class="x">HelloWorld</li>
 		</ul>
-        <Parent></Parent>
     </div>
 </template>
 
