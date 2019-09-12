@@ -1,5 +1,5 @@
 <template>
-    <div class="content"></div>
+    <div class="content">欢迎来到未来水世界</div>
 </template>
 
 <script>

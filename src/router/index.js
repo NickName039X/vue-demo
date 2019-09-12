@@ -9,11 +9,19 @@ const parent = () => import('@c/layout02/Parent.vue');
 const child = () => import('@c/layout02/Child.vue');
 const son = () => import('@c/layout02/Son.vue');
 
+const template = () => import('@c/Template.vue');
+
 
 const router = new Router({
+    // mode:'history',
     routes: [
         {
             path: '/',
+            name: 'template',
+            component: template
+        },
+        {
+            path: '/hello',
             name: 'hello',
             component: hello
         },
