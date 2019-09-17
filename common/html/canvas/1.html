@@ -29,17 +29,24 @@
     }
 
     #canvas2 {
+
         /*
-        当没有设置宽度和高度的时候，canvas会初始化宽度为300像素和高度为150像素 .
-        如果CSS的尺寸与初始画布的比例不一致，它会出现扭曲
+            当没有设置宽度和高度的时候，canvas会初始化宽度为300像素和高度为150像素 .
+            如果CSS的尺寸与初始画布的比例不一致，它会出现扭曲
         */
-        /* width: 1000px;
-        height: 500px; */
-        /* display: block; */
+
+        /*
+            width: 1000px;
+            height: 500px;
+            display: block;
+        */
     }
 </style>
 <script>
+
     //矩形
+    /** @type {HTMLCanvasElement} */
+    //添加该行注释可得代码智能提示。
     var c = document.getElementById("mycanvas");
     var ctx = c.getContext("2d");
     ctx.fillStyle = "lightblue";
@@ -79,7 +86,11 @@
     ctx.strokeText("方韬", 250, 200); //不支持文本断行，若要生成多行文本，只能多次调用
 
 
+
+
     /* canvas2 */
+    /** @type {HTMLCanvasElement} */
+
     var canvas2 = document.getElementById("canvas2");
     var ctx2 = canvas2.getContext("2d");
     ctx2.fillStyle = "pink";
