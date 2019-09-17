@@ -1,21 +1,31 @@
 <template>
     <div class="content">
-      我是top
+        Son组件
     </div>
 </template>
 
 <script>
 export default {
-    name: "top", //组件名
+    name: "Son", //组件名
     data() {
         return {};
     },
     created() {},
-    mounted() {},
-    methods: {}
+    mounted() {
+        console.log("Son==================", this.$attrs);
+    },
+    methods: {
+
+    }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+ul {
+    list-style: none;
+}
+.content {
+    background: #ccffff;
+}
 </style>
