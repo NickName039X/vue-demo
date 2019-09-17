@@ -4,10 +4,10 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 const hello = () => import('@c/HelloWorld.vue');
-const table = () => import('@c/table.vue');
-const parent = () => import('@c/layout02/Parent.vue');
-const child = () => import('@c/layout02/Child.vue');
-const son = () => import('@c/layout02/Son.vue');
+const table = () => import('@c/Table.vue');
+const parent = () => import('@c/Parent.vue');
+const child = () => import('@c/Child.vue');
+const son = () => import('@c/Son.vue');
 
 const template = () => import('@c/Template.vue');
 
@@ -47,7 +47,12 @@ const router = new Router({
             path: '/child',
             name: 'child',
             component: child
-        }
+        },
+        {
+            path: '/parent',
+            name: 'parent',
+            component: parent
+        },
     ]
 });
 export default router;

@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Parent from "./layout02/Parent.vue";
-import Child from "./layout02/Child.vue";
+import Parent from "./Parent.vue";
+import Child from "./Child.vue";
 export default {
     name: "HelloWorld",
     props: {

@@ -7,8 +7,8 @@
             msg="xiaoli"
             age="20"
             maxlength="10"
-            v-bind="$attrs"
             max="100"
+            v-bind="$attrs"
             v-on="$listeners"
             @input="onInputEvent"
             @focus="onFocusEvent"
@@ -20,7 +20,7 @@
 <script>
 import { get } from "https";
 import Child from "./Child.vue";
-import baseInput from './base-input.vue';
+import baseInput from './BaseInput.vue';
 export default {
     name: "Parent", //组件名
     components: {
