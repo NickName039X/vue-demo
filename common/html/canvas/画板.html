@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css"
+    >
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+</head>
+<body>
+<canvas id="canvas" width="400px" height="400px" onclick="onclickCanvas()"></canvas>
+<ul class="functions">
+    <li>
+        <button onclick="clearScreen()">清屏</button>
+    </li>
+    <li>
+        <input id="colorpicker" onchange="changeColor()"/>
+    </li>
+</ul>
+</body>
+</html>
+
+<script>
+    var color = 'red';
+    window.onload = function () {
+        $ ("#colorpicker").spectrum ({
+            color : '#009900',
+            showAlpha : true
+        });
+        
+        
+    };
+    
+    function changeColor () {
+        var t = $ ("#colorpicker").spectrum ("get");//获取color实例
+        color = t.toHexString ();
+        
+        
+    }
+    
+    /*onclick,onmousedown,onmouseup是javascript事件。click,mousedown是jquery事件
+    * onclick是鼠标点击弹起之后的事件，onmousedown是鼠标按下之后触发的事件。如果在某个地方按下
+    * 鼠标之后移开鼠标并在另外一个地方松开鼠标，则只会触发mousedown事件，不会触发onclick事件*/
+    
+    function onclickCanvas (event) {
+        console.log ('click事件触发了');
+    }
+    
+    //发现一个问题 画布闪烁 思考一下这个问题。
+    
+    //1.获取canvas和上下文
+    var canvas = document.getElementById ('canvas');
+    var ctx = canvas.getContext ('2d');
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 1;
+    
+    ctx.strokeRect (0, 0, canvas.width, canvas.height);
+    
+    //2.监听鼠标的移动
+    canvas.onmousedown = function (event) {
+        console.log ('onmousedown事件触发了');
+        //清屏操作
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 1;
+        
+        //开启路径
+        ctx.beginPath ();
+        //起点
+        ctx.moveTo (event.offsetX, event.offsetY);
+        
+        
+        //鼠标点击了才生效
+        canvas.onmousemove = function (event) {
+            console.log ('onmousemove', color);
+            //终点
+            ctx.lineTo (event.offsetX, event.offsetY);
+            
+            //设置颜色和线宽
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 3;
+            //绘制 描边
+            ctx.stroke ();
+        };
+        
+        
+        canvas.onmouseup = function () {
+            canvas.onmousemove = null;
+            canvas.onmouseup = null;
+        };
+    };
+    
+    //
+    function clearScreen () {
+        ctx.clearRect (0, 0, canvas.width, canvas.height); //清屏操作
+        
+        //清屏不能把边框给清掉了
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 1;
+        ctx.strokeRect (0, 0, canvas.width, canvas.height);
+    }
+
+
+</script>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    canvas {
+        float: left;
+        margin-left: 10px;
+    }
+    
+    .functions {
+        float: left;
+        margin: 20px;
+        list-style: none;
+    }
+    
+    .functions li + li {
+        margin-top: 10px;
+    }
+    
+    
+    .functions li button {
+        padding: 5px 10px;
+    }
+</style>
