@@ -27,12 +27,24 @@ var doSomeInstancing = new doSomething();
 doSomeInstancing.prop = 'some value'; // add a property onto the object
 console.log(doSomeInstancing);
 
+
+
 doSomething.__proto__ === Function.prototype; //true
 Function.prototype.__proto__ === Object.prototype; //true
 doSomething.__proto__.__proto__ === Object.prototype; //true
 doSomething.__proto__.__proto__.__proto__ === null; //true
 
+
 doSomething.__proto__.__proto__ === doSomeInstancing.__proto__.__proto__; //true  Object.prototype
-doSomething.__proto__ === doSomeInstancing.__proto__; //false
+doSomething.__proto__ === Object.getPrototypeOf(doSomeInstancing); //false
 Object.prototype.__proto__ === null;
+
+Object.getPrototypeOf(Object.getPrototypeOf(doSomeInstancing)) === doSomething.__proto__.__proto__
+
+Object.getPrototypeOf(Object) === Object.getPrototypeOf(Function);
+
+Object.getPrototypeOf(Function.prototype); //Object
+Object.getPrototypeOf(Function); //native code
+Object.getPrototypeOf(Object); //native code
+
 
