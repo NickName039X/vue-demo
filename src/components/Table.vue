@@ -108,6 +108,8 @@ export default {
           this.tableData = res.data;
           console.log(2, res);
         });
+
+        
     },
 
     gettodos() {
