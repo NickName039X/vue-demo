@@ -47,3 +47,4 @@ const name = 'Sindre';
 console.log(chalk.green('Hello %s'), name);
 //=> 'Hello Sindre'
 
+log(chalk.inverse.underline.red('搜狗输入法'));
