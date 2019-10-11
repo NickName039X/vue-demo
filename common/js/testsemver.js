@@ -13,4 +13,4 @@ semver.valid(semver.coerce('42.6.7.9.3-alpha')) // '42.6.7'
 
 
 log(semver.valid('1.2.3'));
-
+log(semver.gt('~4.0.0', '4.0.6'));

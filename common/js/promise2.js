@@ -40,6 +40,8 @@ function getUsername(userId) {
 
 // }
 
+
+
 // Promise.try可以统一同步错误和异步错误！
 
 
