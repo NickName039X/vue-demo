@@ -1,11 +1,25 @@
+let p0  = new Promise((resolve, reject) => {
+    resolve(1);
+});
+
+//then传递常量100会被忽略
+p0.then(100).then(res => {
+    console.log(res);
+});
+
 
 let p = new Promise((resolve, reject) => {
     resolve(1);
 });
 
-p.then(2).then(res => {
-
+p.then(res => {
+    return Promise.resolve(2);
+}).then(res => {
+    console.log(res);
 });
+
+
+
 
 
 let p1 = new Promise((resolve, reject) => {
