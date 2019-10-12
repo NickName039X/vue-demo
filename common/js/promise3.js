@@ -3,6 +3,10 @@ let p = new Promise((resolve, reject) => {
     resolve(1);
 });
 
+p.then(2).then(res => {
+
+});
+
 
 let p1 = new Promise((resolve, reject) => {
     reject(new Error('你是魔鬼吗?'));
