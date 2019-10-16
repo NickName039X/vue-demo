@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="parent">
+                <img class="child" src="../img/load.gif"></img>
+            </div>
+        </div>
+    </body>
+
+</html>
+<style>
+    .container {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: cyan;
+        z-index: 500;
+    }
+
+    .parent {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 600;
+    }
+
+    .child {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        z-index: 1200;
+        transform: translate(-50%, -50%);
+    }
+</style>
