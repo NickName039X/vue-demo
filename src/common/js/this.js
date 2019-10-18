@@ -1,18 +1,12 @@
 
-function user(){
-	this.a = 1;
-    this.b = 2;
+// 当this遇到return。如果返回值是一个对象，那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。
+
+window.name = 'pk';
+function fn() {
+    this.user = '追梦子';
     console.log(this);
-	return {x:12};
+    return null;
 }
-var a = new user();
-console.log(a);
+var a = new fn();
+console.log({ name: a.name, user: a.user }); //
 
-
-function user2(){
-	this.a = 1;
-	this.b = 2;
-	return {key:this}
-}
-var a = new user2();
-console.log(a);
