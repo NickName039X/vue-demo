@@ -98,6 +98,8 @@ Number.prototype.toFixed = function(n) {
 
     return result;
 };
+
+
 //
 (8716.425).toFixed(2); //
 (-8716.425).toFixed(2); //负数前面记得加括号
