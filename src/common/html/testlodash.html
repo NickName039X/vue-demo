@@ -131,7 +131,7 @@
 
         let param = {};
         axios.get(url2, param).then(res => {
-            this.list = res.data;
+            window.list = res.data;
         });
     }
 
@@ -140,12 +140,15 @@
 
     var test = function(){
         console.log('test被调用了');
+        getList();
     };
 
     document.getElementById('btn').onclick = throttle;
-    window.onscroll = function(){
-        _.debounce(test,3000); //debounce返回的是函数不需要再封装了
-    }
 
-    // window.onscroll = _.debounce(test,300);
+    // //error
+    // window.onscroll = function(){
+    //     _.debounce(test,3000); //debounce返回的是函数不需要再封装了
+    // }
+
+    window.onscroll = _.debounce(test,300);
 </script>
