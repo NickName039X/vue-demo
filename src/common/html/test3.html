@@ -14,4 +14,21 @@
 <script>
     let element = document.querySelector('#app');
     console.dir(element);
+
+    function test(){
+        console.log('test');
+    }
+
+    (function foo(){
+        console.log('foo');
+    })();
+
+    var a = 10;
+    (function a() {
+        console.log(a);
+        var a = 20;
+        console.log(a)
+    })();
+    console.log(a);
+
 </script>
