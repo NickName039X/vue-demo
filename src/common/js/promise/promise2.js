@@ -23,26 +23,3 @@ function getUsername(userId) {
 
         });
 }
-
-// var Promise = require("bluebird");
-
-// function getUsername(userId) {
-
-//     return Promise.try(function () {
-
-//         return database.users.get({ id: userID });
-
-//     }).then(function (user) {
-
-//         return user.name;
-
-//     });
-
-// }
-
-
-
-// Promise.try可以统一同步错误和异步错误！
-
-
-
