@@ -15,7 +15,7 @@ console.log([] == false)
 
 
 // 截然不同的结果
-Number([]) //0 [].toString() === ''
+Number([]) //0   因为[].toString() === ''
 Number('') //0
 Boolean([]) //true
 Boolean(new Boolean(false)); //true
