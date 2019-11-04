@@ -7,3 +7,5 @@ var regex2 = /\d+(?=%)/;
 console.log(regex2.test('100%')) //只匹配%之前的数字
 
 var regex3 = /x(?!y)/
+
+var regex4 = /\d.(?|\.){3,}/
