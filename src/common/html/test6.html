@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div>
+            <div class="d1"></div>
+            <div class="d2"></div>
+            <div class="d3"></div>
+        </div>
+    </body>
+
+</html>
+<style>
+    div {
+        float: left;
+    }
+
+    @media screen {}
+</style>
+<script>
+    var a = { a: 1 }, b = { b: 1 };
+    !(function (arg1, arg2) {
+        console.log(arguments)
+        arg1 = arg2;
+        console.log(arg2,a,b);
+        arg2['c'] = 2;
+        console.log(arg2,a,b);
+    })(a, b)
+    console.log(JSON.stringify(a), JSON.stringify(b));
+
+    //{"a":1} {"b":1,"c":2}
+
+    var c = {c:2};
+</script>
