@@ -30,13 +30,16 @@ new Foo().getName(); //3
 new new Foo().getName(); //3
 
 
-function Person(){
-    this.name = name;
+function Person(ban){
+    this.ban = ban;
+
+    return {
+        name:'xiaogang'
+    };
 }
-var o,k;
 var new2 = function(func){
-    o = Object.create(func.prototype)
-    k = func.call(o);
+    var o = Object.create(func.prototype)
+    var k = func.call(o);
     console.log(k)
     if(k && typeof k === 'object'){
         return k;
