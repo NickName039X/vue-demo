@@ -28,3 +28,22 @@ getName(); //1
 new Foo.getName(); //2
 new Foo().getName(); //3
 new new Foo().getName(); //3
+
+
+function Person(){
+    this.name = name;
+}
+var o,k;
+var new2 = function(func){
+    o = Object.create(func.prototype)
+    k = func.call(o);
+    console.log(k)
+    if(k && typeof k === 'object'){
+        return k;
+    }else{
+        return o;
+    }
+
+}
+
+var c = new2(Person);

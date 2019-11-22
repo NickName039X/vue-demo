@@ -6,11 +6,12 @@ function Person(name, age) {
         console.log('name', this.name);
         return this.name + ' ' + this.age;
     };
-    console.log('调用了Person的构造函数', this);
     return this;
 }
 let p1 = new Person('bcb', 12); //返回一个实例化了的对象
 let p2 = Person('cyy', 90); //undefined
+
+
 let name = 'global';
 
 let myobj1 = new Object();
