@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    //111 squash1 222
+    //111 squash1 222 333
 
 export default {
     name: "Parent", //组件名
