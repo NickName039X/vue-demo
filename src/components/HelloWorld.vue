@@ -1,41 +1,53 @@
 <template>
     <div>
-        HelloWorld
+        hello，欢迎你学习vue。
     </div>
 </template>
 
 <script>
-import Parent from "./Parent.vue";
-import Child from "./Child.vue";
-export default {
-    name: "HelloWorld",
-    props: {
-        msg: String
-    },
-    components: {
-        Parent,
-        Child
-	},
-	mounted() {
-		console.log(Number.isNaN(1));
-	},
-};
+    import Parent from "./Parent.vue";
+    import Child from "./Child.vue";
+    import mixin from "../../src/mixin"
+
+    export default {
+        name: "HelloWorld",
+        data(){
+            return {
+                message:'waowao'
+            }
+        },
+        props: {
+            msg: String
+        },
+        mixins:[mixin],
+        components: {
+            Parent,
+            Child
+        },
+        created(){
+            console.log('hello组件的钩子被调用了');
+            console.log(this.message);
+        },
+    };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-    margin: 40px 0 0;
-}
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-a {
-    color: #42b983;
-}
+    h3 {
+        margin: 40px 0 0;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    a {
+        color: #42b983;
+    }
 </style>
