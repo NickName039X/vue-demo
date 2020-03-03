@@ -19,3 +19,4 @@ function foo() {
 var a;
 foo();
 (_a = { a: "baz", b: 101 }, a = _a.a, b = _a.b);
+var str = '11111111111111111111222';
