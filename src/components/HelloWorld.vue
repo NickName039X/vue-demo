@@ -29,6 +29,22 @@
             console.log(this.message);
         },
     };
+import Parent from "./Parent.vue";
+import Child from "./Child.vue";
+export default {
+    name: "HelloWorld",
+    props: {
+        msg: String
+    },
+    components: {
+        Parent,
+        Child
+	},
+	mounted() {
+		console.log(Number.isNaN(1));
+		console.log(Number.isNaN('sssqqqtttvvv'));
+	},
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

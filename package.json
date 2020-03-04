@@ -32,6 +32,8 @@
         "chalk": "^2.4.2",
         "flow": "^0.2.3",
         "flow-bin": "^0.109.0",
+        "node-sass": "^4.13.1",
+        "sass-loader": "^8.0.2",
         "semver": "^6.3.0",
         "shelljs": "^0.8.3",
         "vue-template-compiler": "^2.5.21"

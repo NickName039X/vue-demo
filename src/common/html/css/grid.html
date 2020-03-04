@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+<div class="grid">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+
+</div>
+<div class="grid2">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+</div>
+
+</body>
+
+</html>
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 100px 100px 100px;
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+        justify-items: stretch;
+        align-items: stretch;
+
+    }
+
+    .grid div {
+        background: #42b983;
+    }
+
+    .grid2 {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 150px 1fr 2fr;
+        grid-template-rows: 100px 100px 100px;
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+        justify-items: stretch;
+        align-items: stretch;
+
+    }
+
+    .grid2 div {
+        background:#ccffff;
+    }
+</style>
