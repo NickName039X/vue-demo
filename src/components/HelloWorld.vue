@@ -25,6 +25,7 @@
             Child
         },
         created(){
+            //merge test
             console.log('hello组件的钩子被调用了');
             console.log(this.message);
         },
