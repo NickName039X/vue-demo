@@ -7,7 +7,7 @@
 
 <script>
 import HelloWorld from "./components/index.vue";
-import tableMain from "./components/Table.vue";
+import tableMain from "./components/table.vue";
 
 export default {
   name: "app",

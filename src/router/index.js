@@ -4,7 +4,7 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 const index = () => import('@c/index.vue');
-const table = () => import('@c/Table.vue');
+const table = () => import('@c/table.vue');
 const parent = () => import('@c/parent.vue');
 const child = () => import('@c/child.vue');
 const son = () => import('@c/son.vue');
@@ -29,7 +29,7 @@ const router = new Router({
             path: '/table',
             name: 'table',
             component: table,
-            redirect:'/table/son',
+            redirect:'/table/parent',
             children: [
                 {
                     path: 'son',

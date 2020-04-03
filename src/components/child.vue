@@ -16,21 +16,17 @@
             <son style="margin-top: 10px" v-bind="{props:$props,attrs:$attrs }"></son>
             <!--3.都传递-->
         </div>
-
-        <div style="margin-top: 20px;">
-            <div>{{visible}}</div>
-            <el-button type="primary" size="small" @click="visible = false">确定</el-button>
-        </div>
     </div>
 </template>
 <script>
-    import Son from "./son";
-
+    import son from "./son";
     export default {
-        name: "Child", //组件名
+        name: "child", //组件名
         props: {
-            msg: String,
-            visible: false
+            msg: {
+                type: String,
+                default: ""
+            }
         },
         inheritAttrs: false, //没有被子组件继承的父组件属性，不会当做特性展示在子组件根元素上面。
         //默认情况下父作用域的不被认作 props 的特性绑定 ( attribute bindings ) 将会“回退”且作为普通的 HTML 特性应用在子组件的根元素上。false可以取消这种默认
@@ -38,7 +34,7 @@
             return {};
         },
         components: {
-            Son
+            son
         },
         computed: {
             inputListeners: function () {
