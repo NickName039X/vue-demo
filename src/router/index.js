@@ -3,27 +3,27 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 
-const hello = () => import('@c/HelloWorld.vue');
+const index = () => import('@c/index.vue');
 const table = () => import('@c/Table.vue');
-const parent = () => import('@c/Parent.vue');
-const child = () => import('@c/Child.vue');
-const son = () => import('@c/Son.vue');
+const parent = () => import('@c/parent.vue');
+const child = () => import('@c/child.vue');
+const son = () => import('@c/son.vue');
 
-const template = () => import('@c/Template.vue');
+const template = () => import('@c/template.vue');
 
 
 const router = new Router({
     // mode:'history',
     routes: [
         {
-            path: '/',
+            path: '/template',
             name: 'template',
             component: template
         },
         {
-            path: '/hello',
-            name: 'hello',
-            component: hello
+            path: '/',
+            name: 'index',
+            component: index
         },
         {
             path: '/table',

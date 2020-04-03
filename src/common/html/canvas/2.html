@@ -9,57 +9,46 @@
     </head>
 
     <body>
-            <canvas id="canvas" width="1000" height="500"></canvas>
+        <canvas id="mycanvas" width="600" height="300"></canvas>
     </body>
 
 </html>
+
 <script>
-    var sun = new Image();
-    var moon = new Image();
-    var earth = new Image();
-    function init() {
-        sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
-        moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
-        earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
-        window.requestAnimationFrame(draw);
-    }
+    /** @type {HTMLCanvasElement} */
+    var mycanvas = document.getElementById('mycanvas');
+    var ctx = mycanvas.getContext('2d');
 
-    function draw() {
+    ctx.strokeStyle = 'red';//改变线条的颜色
+    ctx.fillStyle = "red";// 填充色
+    ctx.strokeStyle = 'red';// 描边色
+    ctx.lineWidth = 5;// 设置线宽
+    ctx.shadowBlur = 20 //阴影宽度
+    ctx.shadowColor = 'pink'//阴影颜色
+    ctx.shadowOffsetX; //设置或返回阴影与形状的水平偏移距离
+    ctx.shadowOffsetY; //设置或返回阴影与形状的垂直偏移距离
+    ctx.beginPath();
 
-        var ctx = document.getElementById('canvas').getContext('2d');
+    /*
+        弧度 = 弧长/半径
+        弧度的定义：一个角对应的弧长与半径的比值就是弧度。2π = 360°
+    */
+    ctx.arc(100, 100, 50, 0, Math.PI * 2, true); // 绘制一个闭合的圆
+    ctx.stroke(); //绘制 描边
 
-        ctx.globalCompositeOperation = 'destination-over';
-        ctx.clearRect(0, 0, 300, 300); // clear canvas
 
-        ctx.fillStyle = 'rgba(0,0,0,0.4)';
-        ctx.strokeStyle = 'rgba(0,153,255,0.4)';
-        ctx.save();
-        ctx.translate(150, 150);
-
-        // Earth
-        var time = new Date();
-        ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
-        ctx.translate(105, 0);
-        ctx.fillRect(0, -12, 50, 24); // Shadow
-        ctx.drawImage(earth, -12, -12);
-
-        // Moon
-        // ctx.save();
-        // ctx.rotate(((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds());
-        // ctx.translate(0, 28.5);
-        // ctx.drawImage(moon, -3.5, -3.5);
-        // ctx.restore();
-
-        // ctx.restore();
-
-        // ctx.beginPath();
-        // ctx.arc(150, 150, 105, 0, Math.PI * 2, false); // Earth orbit
-        // ctx.stroke();
-
-        // ctx.drawImage(sun, 0, 0, 300, 300);
-
-        window.requestAnimationFrame(draw);
-    }
-
-    init();
 </script>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    canvas {
+
+        /* background:red */
+        border: 1px solid #999;
+        display: block;
+    }
+</style>

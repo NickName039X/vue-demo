@@ -6,13 +6,13 @@
 
 <script>
 export default {
-    name: "Son", //组件名
+    name: "son", //组件名
     data() {
         return {};
     },
     created() {},
     mounted() {
-        console.log("Son==================", this.$attrs);
+        console.log("$attrs==============>", this.$attrs);
     },
     methods: {
 
@@ -22,10 +22,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-ul {
-    list-style: none;
-}
-.content {
-    background: #ccffff;
-}
+
 </style>

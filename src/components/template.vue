@@ -1,8 +1,10 @@
 <template>
-    <div class="content">欢迎来到未来水世界</div>
+    <div class="content">欢迎来到hello</div>
 </template>
 
 <script>
+    //111 squash1 222 333 444 555
+
 export default {
     name: "Parent", //组件名
     data() {

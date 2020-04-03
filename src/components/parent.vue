@@ -1,7 +1,7 @@
 <template>
-    <div class="myblock">
+    <div class="container">
         <div>Parent组件</div>
-        <Child
+        <child
             :visible.sync="show"
             name="小李"
             msg="xiaoli"
@@ -13,18 +13,18 @@
             @input="onInputEvent"
             @focus="onFocusEvent"
             @ageInput="onAgeInputEvent"
-        ></Child>
+        ></child>
         <base-input @focus.native="onBaseFocus" @input.native="onBaseInput"></base-input>
     </div>
 </template>
 <script>
 import { get } from "https";
-import Child from "./Child.vue";
-import baseInput from './BaseInput.vue';
+import child from "./child.vue";
+import baseInput from './v-model/index';
 export default {
     name: "Parent", //组件名
     components: {
-        Child,
+        child,
         baseInput
     },
     data() {
@@ -63,8 +63,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.myblock {
-    border: 1px solid #cfcfcf;
-    width: 100%;
+.container {
+    border: 1px solid;
+    margin: 20px;
 }
 </style>
