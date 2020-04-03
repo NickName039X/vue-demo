@@ -1,21 +1,26 @@
 <template>
-    <div class="content">欢迎来到未来水世界</div>
+    <div class="content">
+        Son组件
+    </div>
 </template>
 
 <script>
-    //111 squash1 222 333 444 555
-
 export default {
-    name: "Parent", //组件名
+    name: "son", //组件名
     data() {
         return {};
     },
     created() {},
-    mounted() {},
-    methods: {}
+    mounted() {
+        console.log("$attrs==============>", this.$attrs);
+    },
+    methods: {
+
+    }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 </style>

@@ -1,8 +1,7 @@
-# demo
 # nginx 配置
 ````
 http:{ 
-      gzip on; #开启或关闭gzip on off
+      gzip on; //开启或关闭gzip on off
       gzip_disable "msie6"; #不使用gzip IE6
       gzip_min_length 100k; #gzip压缩最小文件大小，超出进行压缩（自行调节）
       gzip_buffers 4 16k; #buffer 不用修改

@@ -5,12 +5,12 @@
 </template>
 
 <script>
-    import Parent from "./Parent.vue";
-    import Child from "./Child.vue";
+    import Parent from "./parent.vue";
+    import Child from "./child.vue";
     import mixin from "../../src/mixin"
 
     export default {
-        name: "HelloWorld",
+        name: "index",
         data(){
             return {
                 message:'waowao'
@@ -29,23 +29,11 @@
             console.log('hello组件的钩子被调用了');
             console.log(this.message);
         },
+        mounted() {
+            console.log(Number.isNaN(1));
+            console.log(Number.isNaN('sssqqqtttvvv'));
+        },
     };
-import Parent from "./Parent.vue";
-import Child from "./Child.vue";
-export default {
-    name: "HelloWorld",
-    props: {
-        msg: String
-    },
-    components: {
-        Parent,
-        Child
-	},
-	mounted() {
-		console.log(Number.isNaN(1));
-		console.log(Number.isNaN('sssqqqtttvvv'));
-	},
-};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
