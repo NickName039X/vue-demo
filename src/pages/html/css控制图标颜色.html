@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Document</title>
+</head>
+
+<body>
+    <span class="icon-wrapper">
+        <span class="icon-del"></span>
+    </span>
+    <script>
+        var _mtac = {"performanceMonitor":1,"senseQuery":1};
+        (function() {
+                var mta = document.createElement("script");
+                mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.4";
+                mta.setAttribute("name", "MTAH5");
+                mta.setAttribute("sid", "500713899");
+                mta.setAttribute("cid", "500713900");
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(mta, s);
+
+        })();
+      </script>
+</body>
+
+</html>
+<script>
+    window.onload = function(){
+        console.log("onload");
+        alert("onload");
+    }
+</script>
+<style>
+    html,body{
+        padding: 0;
+        margin: 0;
+    }
+    .icon-wrapper {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .icon-del {
+        background: url(../../assets/del2.png) no-repeat center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: -30px;
+        display: inline-block;
+        border-right: 30px solid transparent;
+        -webkit-filter: drop-shadow(red 30px 0);
+        filter: drop-shadow(red 30px 0);
+        /* css滤镜 */
+    }
+</style>
