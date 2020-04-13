@@ -4,7 +4,7 @@
 
 <script>
     //111 squash1 222 333 444 555
-    //000999
+    //00099999
 
 export default {
     name: "Parent", //组件名
