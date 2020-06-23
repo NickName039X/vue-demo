@@ -80,7 +80,7 @@
         mounted() {
             // console.log("Child attrs==============", this.$attrs); //vue 2.4.0新增
             // console.log("Child listeners==========", this.$listeners); //vue 2.4.0新增
-            console.log(this.$parent);
+            console.log('???',this.$parent);
         },
         methods: {}
     };
