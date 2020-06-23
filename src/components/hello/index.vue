@@ -5,9 +5,9 @@
 </template>
 
 <script>
-    import Parent from "./parent.vue";
-    import Child from "./child.vue";
-    import mixin from "../../src/mixin"
+    import Parent from "../parent.vue";
+    import Child from "../child.vue";
+    import mixin from "../../mixin"
 
     export default {
         name: "index",

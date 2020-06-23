@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import HelloWorld from "./components/index.vue";
-import tableMain from "./components/table.vue";
+import HelloWorld from "./components/hello/index.vue";
+import tableMain from "./components/table/table.vue";
 
 export default {
   name: "app",
