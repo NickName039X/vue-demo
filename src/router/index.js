@@ -27,6 +27,11 @@ const router = new Router({
         },
         {
             path: '/table',
+            name: 'index',
+            component: () => import('@/views/table')
+        },
+        {
+            path: '/table',
             name: 'table',
             component: table,
             redirect:'/table/son',
