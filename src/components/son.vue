@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        Son组件
+        {{$attrs}}
     </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
     },
     created() {},
     mounted() {
-        console.log("$attrs==============>", this.$attrs);
+        console.log(" Son ==============>", this.$attrs);
     },
     methods: {
 
