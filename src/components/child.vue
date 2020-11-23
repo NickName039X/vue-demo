@@ -13,7 +13,7 @@
             <!--1.传递props-->
             <son style="margin-top: 10px" v-bind="$attrs"></son>
             <!--2.传递非props-->
-            <son style="margin-top: 10px" v-bind="{props:$props,attrs:$attrs }"></son>
+            <son style="margin-top: 10px" v-bind="{...$props,...$attrs }"></son>
             <!--3.都传递-->
         </div>
 
@@ -82,8 +82,8 @@
         created() {
         },
         mounted() {
-            // console.log("Child attrs==============", this.$attrs); //vue 2.4.0新增
-            // console.log("Child listeners==========", this.$listeners); //vue 2.4.0新增
+            console.log("Child attrs==============", this.$attrs); //vue 2.4.0新增
+            console.log("Child listeners==========", this.$listeners); //vue 2.4.0新增
             console.log(this.$parent);
         },
         methods: {}
