@@ -15,7 +15,7 @@
         "element-ui": "^2.10.0",
         "less": "^2.7.3",
         "less-loader": "^4.0.5",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.19",
         "path": "^0.12.7",
         "react-monaco-editor": "^0.40.0",
         "uglifyjs-webpack-plugin": "^2.1.3",
