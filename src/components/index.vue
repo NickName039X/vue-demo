@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="app">
         hello，欢迎你学习vue。
     </div>
 </template>
