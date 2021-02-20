@@ -1,13 +1,18 @@
 <template>
-  <div id="app">
-    <router-link to="/"></router-link>
+  <div id="app">2222
+    <hello-world></hello-world>
     <router-view />
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import HelloWorld from "./components/hello/index.vue";
 import tableMain from "./components/table/table.vue";
+=======
+import HelloWorld from "./components/index.vue";
+import tableMain from "./components/table.vue";
+>>>>>>> origin/master
 
 export default {
   name: "app",

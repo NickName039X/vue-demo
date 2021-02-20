@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        Son组件
+        {{$attrs}}
     </div>
 </template>
 
@@ -12,7 +12,11 @@ export default {
     },
     created() {},
     mounted() {
+<<<<<<< HEAD:src/components/son.vue
         console.log("$attrs==============>", this.$attrs);
+=======
+        console.log(" Son ==============>", this.$attrs);
+>>>>>>> origin/master:src/components/Son.vue
     },
     methods: {
 

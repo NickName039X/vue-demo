@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <canvas id="canvas" width="240" height="240"></canvas>
+    </body>
+
+</html>
+
+<script>
+    /** @type {HTMLCanvasElement} */
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, 200, 200);
+
+
+    var marginWH = 30;//表示每一个格子之间的空格距离
+    //计算行和列
+    var row = canvas.height / marginWH;
+    var col = canvas.width / marginWH;
+    /*
+    * 绘制背景网格
+    * */
+    //3.绘制横线
+    for (var i = 0; i <= row; i++)
+    {
+        ctx.moveTo(10, 10 + i * marginWH);
+        ctx.lineTo(canvas.width, 10 + i * marginWH);
+    };
+    //绘制竖线
+    for (var i = 0; i <= col; i++)
+    {
+        ctx.moveTo(10 + i * marginWH, 10);
+        ctx.lineTo(10 + i * marginWH, canvas.height);
+    };
+    //设置颜色
+    ctx.strokeStyle = 'red';
+    //设置线宽
+    ctx.lineWidth = 0.5;
+    //4.绘制 描边
+    ctx.stroke();
+
+</script>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>

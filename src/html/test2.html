@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <!-- <div class="add"></div> -->
+</body>
+</html>
+<style lang="css">
+    *{
+        padding:0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background: gray;
+    }
+    .box1{
+        width: 100px;
+        height: 100px;
+        background: purple;
+        opacity: 0.5;
+        float: left;
+    }
+    .box2{
+        width: 200px;
+        height: 100px;
+        background: lightseagreen;
+        opacity: 0.5;
+        overflow: hidden;
+        /* overflow:hidden原理是形成了bfc */
+        /* overflow: hidden;
+        margin-left: 100px;
+        二选一，都可以生效
+        */
+
+    }
+    .add{
+        display: inline-block;
+        width: 50px;
+        height: 100px;
+        background:gray
+    }
+</style>
+
+

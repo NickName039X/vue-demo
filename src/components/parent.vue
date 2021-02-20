@@ -2,6 +2,7 @@
     <div class="container">
         <div>Parent组件</div>
         <child
+            :visible.sync="show"
             name="小李"
             msg="xiaoli"
             age="20"
@@ -64,7 +65,5 @@ export default {
 .container {
     border: 1px solid;
     margin: 20px;
-    width: 100%;
-    box-sizing: border-box;
 }
 </style>

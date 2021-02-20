@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <style>
+            .div1 {
+                border: 1px solid red;
+                width: 98%;
+                overflow: hidden
+            }
+        </style>
+        <!-- 浮动元素的父元素设置了overflow:hidden必须设置width或zoom:1 -->
+        <div class="div1 clearfloat">
+            <div class="left">
+                Left1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+                1111111111111111111111111111111111111111111111111111111111111111111111111111111111
+            </div>
+            <div class="right">
+                right222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+                222222222222222222222222222222222222222222222222222
+            </div>
+            <!-- <span>asdf</span> -->
+        </div>
+        <span>阿斯顿</span> <span>阿斯顿</span>
+        <div class="div2">
+            div2
+        </div>
+
+    </body>
+
+</html>
+<style>
+    .left,
+    .right {
+        float: left;
+        width: 50%;
+        word-break: break-all;
+    }
+
+    .left {
+        background: cyan;
+    }
+
+    .right {
+        background: palegreen;
+    }
+</style>

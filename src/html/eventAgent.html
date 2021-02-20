@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    
+
+    <body>
+        <div id="div1">
+            得加点什么内容才行1
+            <a href="#">a1</a>
+            <a href="#">a2</a>
+            <a href="#">a3</a>
+            <a href="#">a4</a>
+        </div>
+        <button id="btn">点击增加一个 a 标签</button>
+    </body>
+
+</html>
+<script>
+    var btn = document.getElementById('btn');
+    btn.addEventListener('click', e => {
+        console.log('点击了btn按钮');
+    });
+
+    var div1 = document.getElementById('div1');
+    div1.addEventListener('click', function (e) {
+        // e.target 可以监听到触发点击事件的元素是哪一个
+        var target = e.target;
+        console.log(e);
+        if (e.nodeName === 'A') {
+            // 点击的是 <a> 元素
+            alert(target.innerHTML)
+        }
+    })
+</script>

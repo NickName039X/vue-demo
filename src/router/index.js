@@ -1,53 +1,49 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-Vue.use(Router);
-
-const index = () => import('@c/hello/index.vue');
-const table = () => import('@c/table/table.vue');
-const parent = () => import('@c/parent.vue');
-const child = () => import('@c/child.vue');
-const son = () => import('@c/son.vue');
-
-
-
-
 const router = new Router({
     // mode:'history',
     routes: [
         {
             path: '/',
             name: 'index',
-            component: index
+            component: import('@/App.vue'),
+        },
+        {
+            path: '/module',
+            name: 'module',
+            component:()=> import('@/views/module/index.vue'),
+        },
+        {
+            path: '/template',
+            name: 'template',
+            component:()=> import('@c/template.vue')
+        },
+        {
+            path: '/table',
+            name: 'index',
+            component: () => import('@/views/table')
         },
         {
             path: '/table',
             name: 'table',
-            component: table,
-            redirect:'/table/parent',
+            component: import('@c/table.vue'),
             children: [
                 {
                     path: 'son',
                     name: 'son',
-                    component: son
+                    component: import('@c/son.vue')
                 },
                 {
                     path: 'parent',
                     name: 'parent',
-                    component: parent
+                    component:  import('@c/parent.vue')
                 },
             ]
         },
-        {
-            path: '/child',
-            name: 'child',
-            component: child
-        },
-        {
-            path: '/parent',
-            name: 'parent',
-            component: parent
-        },
     ]
 });
+
+
+Vue.use(Router);
 export default router;

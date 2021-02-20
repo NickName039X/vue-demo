@@ -4,8 +4,8 @@
         <input
             id="myinput"
             type="text"
-            @focus="$emit('onBaseFocus',$event.target.value)"
-            @input="$emit('onBaseInput',$event.target.value)"
+            @focus="$emit('on-base-focus',$event.target.value)"
+            @input="$emit('on-base-input',$event.target.value)"
         >
     </div>
 </template>

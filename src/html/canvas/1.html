@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <canvas id="mycanvas" width="800" height="400"></canvas>
+        <canvas id="canvas2" width="800" height="400"></canvas>
+        <canvas id="canvas3" width="800" height="200"></canvas>
+    </body>
+
+</html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    canvas {
+
+        /* background:red */
+        border: 1px solid #999;
+        display: block;
+    }
+
+    #canvas2 {
+        /*
+            当没有设置宽度和高度的时候，canvas会初始化宽度为300像素和高度为150像素 .
+            如果CSS的尺寸与初始画布的比例不一致，它会出现扭曲
+        */
+    }
+</style>
+<script>
+
+    //矩形
+    /** @type {HTMLCanvasElement} */
+    //添加该行注释可得代码智能提示。
+    var c = document.getElementById("mycanvas");
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = "lightblue";
+    ctx.fillRect(0, 0, 150, 150); //填充
+    ctx.clearRect(30, 30, 90, 90); //清除
+    ctx.strokeRect(50, 50, 50, 50); //绘制边框
+
+    //绘制线条
+    var c = document.getElementById("mycanvas");
+    var ctx = c.getContext("2d");
+    ctx.moveTo(0, 150);
+    ctx.lineTo(200, 250);
+    ctx.stroke();
+
+    //圆
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(95, 200, 50, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    //字-实心
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = '#000000'; //设置填充颜色
+    ctx.font = "30px 宋体 black";
+    ctx.fillText("Hello World", 250, 50); //不支持文本断行，若要生成多行文本，只能多次调用
+
+    // 创建渐变
+    var grd = ctx.createLinearGradient(0, 0, 200, 0);//线性渐变
+    grd.addColorStop(0, "red");
+    grd.addColorStop(1, "blue");
+
+    //字-空心
+    var ctx = c.getContext("2d");
+    ctx.font = "30px 楷体 black";
+    ctx.strokeStyle = grd; //设置值为渐变
+    ctx.strokeText("Hello World", 250, 150); //不支持文本断行，若要生成多行文本，只能多次调用
+    ctx.strokeText("方韬", 250, 200); //不支持文本断行，若要生成多行文本，只能多次调用
+
+
+
+
+    /* canvas2 */
+    /** @type {HTMLCanvasElement} */
+
+    var canvas2 = document.getElementById("canvas2");
+    var ctx2 = canvas2.getContext("2d");
+    ctx2.fillStyle = "pink";
+    ctx2.fillRect(0, 0, 200, 200);
+
+    var ctx2 = canvas2.getContext('2d');
+    ctx2.fillStyle = '#99cc99';
+    ctx2.beginPath();
+    ctx2.moveTo(0, 0);
+    ctx2.lineTo(200, 0);
+    ctx2.lineTo(0, 200);
+    ctx2.fill();
+
+    /*
+        绘制笑脸
+        弧度的定义：一个角对应的弧长与半径的比值就是弧度。2π = 360°
+        如果想看到连续的线，请移除moveTo
+    */
+    ctx2.beginPath();
+    ctx2.arc(100, 100, 50, 0, Math.PI * 2, true); // 绘制一个闭合的圆
+    ctx2.moveTo(135, 100);
+    ctx2.arc(100, 100, 35, 0, Math.PI, false);   // 口(顺时针)
+    ctx2.moveTo(85, 85);
+    ctx2.arc(80, 85, 5, 0, Math.PI * 2, true);  // 左眼
+    ctx2.moveTo(125, 85);
+    ctx2.arc(120, 85, 5, 0, Math.PI * 2, true);  // 右眼
+    ctx2.stroke();
+
+
+    /* canvas3 */
+
+    //贝塞尔曲线
+    var canvas3 = document.getElementById("canvas3");
+    var ctx3 = canvas3.getContext('2d');
+    ctx3.beginPath();
+    ctx3.moveTo(75, 25);
+    ctx3.quadraticCurveTo(25, 25, 25, 62.5);
+    ctx3.quadraticCurveTo(25, 100, 50, 100);
+    ctx3.quadraticCurveTo(50, 120, 30, 125);
+    ctx3.quadraticCurveTo(60, 120, 65, 100);
+    ctx3.quadraticCurveTo(125, 100, 125, 62.5);
+    ctx3.quadraticCurveTo(125, 25, 75, 25);
+    ctx3.stroke();
+
+</script>
