@@ -9,7 +9,7 @@ let p1 = new Promise((resolve, reject) => {
     // 可调换顺序测试调用 只会执行第一个
     resolve(3);//==>跳往then
     console.log(33); //33会打印
-    resolve(2);//==>跳往then
+    resolve(2);//==>永远不会执行,因为promise已决议
     reject(1);
     reject(new Error(1)); //==>跳往catch
 
@@ -25,7 +25,7 @@ let p2 = new Promise(function (resolve, reject) {
     console.log(4);
     // 可调换顺序测试调用
     resolve(3);//==>跳往then
-    reject(1); //==>跳往catch
+    reject(1); //==>永远不会执行,因为promise已决议
 }).then(function (onfulfilled) {
     console.log(onfulfilled);
 }).catch(onrejected => {

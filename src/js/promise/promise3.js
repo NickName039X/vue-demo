@@ -13,11 +13,17 @@ let p = new Promise ((resolve, reject) => {
     resolve (1);
 });
 
-p.then (res => {
-    return Promise.resolve (2);
-}).then (res => {
-    console.log (res);
+p.then().then (res => {
+    console.log ('then2',res);
 });
+
+// p.then (res => {
+//     console.log('then1',res)
+// }).then (res => {
+//     console.log ('then2',res);
+// });
+
+
 
 
 let p1 = new Promise ((resolve, reject) => {
