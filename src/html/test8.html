@@ -14,13 +14,38 @@
     let img = document.getElementById("img");
     let x0 = 100,
         y0 = 100;
+    // img.style.transform = `rotate(45deg)`
+    let timer = null;
     img.addEventListener("mouseover", function name(params) {
         console.log(params);
         img.addEventListener("mousemove", function name(params) {
-            console.log
+            console.log;
             let dx = params.offsetX - x0;
             let dy = params.offsetY - y0;
-
+            let a = (Math.atan(dy / dx) * 180) / Math.PI;
+            console.log(dx, dy);
+            // if(timer){
+            //     clearTimeout(timer);
+            // }
+            // timer = setTimeout(() => {
+                if (dx > 0 && dy > 0) {
+                    img.style.transform = `rotate(${a}deg)`;
+                    return;
+                }
+                if (dx > 0 && dy < 0) {
+                    img.style.transform = `rotate(-${a}deg)`;
+                    return;
+                }
+                if (dx < 0 && dy < 0) {
+                    img.style.transform = `rotate(-${a + 90}deg)`;
+                    return;
+                }
+                if (dx < 0 && dy > 0) {
+                    img.style.transform = `rotate(${a + 90}deg)`;
+                    return;
+                }
+            // },10);
+            // img.style.transform = `rotate(${a}deg)`
         });
     });
 </script>
