@@ -1,11 +1,11 @@
 <template>
-  <el-container style="height: 500px; border: 1px solid">
-    <el-aside>
+  <el-container style="height: 100vh; border: 1px solid">
+    <el-aside class="aside">
       <el-menu
-       background-color="#545c64"
-       text-color="#fff"
-       active-text-color="#ffd04b"
-      :default-openeds="['1', '3']"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+        :default-openeds="['1', '3']"
       >
         <el-submenu index="1">
           <template slot="title">
@@ -36,6 +36,46 @@
   </el-container>
 </template>
 
+<script>
+export default {
+  name: "asdsa",
+  data() {
+    const item = {};
+    return {
+      tableData: Array(10).fill(item)
+    };
+  },
+
+  created() { },
+
+  async mounted() {
+    await this.getComment();
+    this.gettodos();
+  },
+
+  methods: {
+    getComment() {
+      console.log("1");
+      return this.$http
+        .get("https://jsonplaceholder.typicode.com/comments")
+        .then(res => {
+          this.tableData = res.data;
+          console.log(2, res);
+        });
+    },
+
+    gettodos() {
+      console.log("3");
+      this.$http
+        .get(" https://jsonplaceholder.typicode.com/todos")
+        .then(res => {
+          console.log(4, res);
+        });
+    }
+  }
+};
+</script>
+
 <style scoped lang="less" rel="stylesheet/less">
 .el-header {
   background-color: #b3c0d1;
@@ -55,52 +95,11 @@ a {
   display: block;
   width: 100%;
   color: #fff;
-
 }
 
 .el-aside {
-  color: #333;
+  background: #545c64;
+  width: 200px !important;
+  height: 100%;
 }
 </style>
-
-<script>
-export default {
-  name:'asdsa',
-  data() {
-    const item = {};
-    return {
-      tableData: Array(10).fill(item)
-    };
-  },
-
-  created() {},
-
-  async mounted() {
-    await this.getComment();
-    this.gettodos();
-  },
-
-  methods: {
-    getComment() {
-      console.log("1");
-      return this.$http
-        .get("https://jsonplaceholder.typicode.com/comments")
-        .then(res => {
-          this.tableData = res.data;
-          console.log(2, res);
-        });
-
-        
-    },
-
-    gettodos() {
-      console.log("3");
-      this.$http
-        .get(" https://jsonplaceholder.typicode.com/todos")
-        .then(res => {
-          console.log(4, res);
-        });
-    }
-  }
-};
-</script>
