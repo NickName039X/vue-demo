@@ -13,7 +13,7 @@
           </template>
           <el-menu-item-group>
             <el-menu-item index="1-1">
-              <router-link to="/table/son">son</router-link>
+              <router-link to="/table/template1">template1</router-link>
             </el-menu-item>
             <el-menu-item index="1-2">
               <router-link to="/table/parent">parent</router-link>
@@ -65,6 +65,7 @@ a {
 
 <script>
 export default {
+  name:'asdsa',
   data() {
     const item = {};
     return {

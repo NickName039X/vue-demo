@@ -7,7 +7,7 @@ const router = new Router({
         {
             path: '/',
             name: 'index',
-            component: import('@/App.vue'),
+            component:()=> import('@/App.vue'),
         },
         {
             path: '/module',
@@ -15,29 +15,24 @@ const router = new Router({
             component:()=> import('@/views/module/index.vue'),
         },
         {
-            path: '/template',
-            name: 'template',
-            component:()=> import('@c/template.vue')
-        },
-        {
-            path: '/table',
-            name: 'index',
-            component: () => import('@/views/table')
-        },
-        {
-            path: '/table',
+            path: '/views/table',
             name: 'table',
-            component: import('@c/table.vue'),
+            component: () => import('@/views/table/index.vue')
+        },
+        {
+            path: '/table',
+            component: ()=>import('@c/table.vue'),
+            // redirect: '/table/template1',
             children: [
                 {
-                    path: 'son',
-                    name: 'son',
-                    component: import('@c/son.vue')
+                    path: 'template1',
+                    name: 'template1',
+                    component:()=> import('@c/template1.vue')
                 },
                 {
                     path: 'parent',
                     name: 'parent',
-                    component:  import('@c/parent.vue')
+                    component:  ()=>import('@c/parent.vue')
                 },
             ]
         },

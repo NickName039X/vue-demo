@@ -22,7 +22,7 @@ import { get } from "https";
 import child from "./child.vue";
 import baseInput from './v-model/index';
 export default {
-    name: "Parent", //组件名
+    name: "parent", //组件名
     components: {
         child,
         baseInput

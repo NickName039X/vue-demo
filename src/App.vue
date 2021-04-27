@@ -1,20 +1,12 @@
 <template>
-  <div id="app">2222
-    <hello-world></hello-world>
+  <div id="app">
     <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/index.vue";
-import tableMain from "./components/table.vue";
-
 export default {
   name: "app",
-  components: {
-    HelloWorld,
-    tableMain
-  }
 };
 </script>
 <style>
