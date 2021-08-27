@@ -15,6 +15,16 @@ const router = new Router({
             component:()=> import('@/views/module/index.vue'),
         },
         {
+            path: '/mixin-test1',
+            name: 'mixin-test1',
+            component:()=> import('@c/mixin-test1.vue'),
+        },
+        {
+            path: '/mixin-test2',
+            name: 'mixin-test2',
+            component:()=> import('@c/mixin-test2.vue'),
+        },
+        {
             path: '/views/table',
             name: 'table',
             component: () => import('@/views/table/index.vue')

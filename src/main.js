@@ -3,6 +3,7 @@ import App from './App.vue'
 import Axios from 'axios';
 import element from 'element-ui';
 import router from '@/router/index.js';
+import './styles/common.css';
 Vue.config.productionTip = false
 Vue.use(element);
 import 'element-ui/lib/theme-chalk/index.css';

@@ -1,11 +1,13 @@
 <template>
-  <div >
-    hello，欢迎你学习vue。
+  <div class="">
+    <div>{{message}}，欢迎你学习vue。</div>
+    <p> {{num}}</p>
   </div>
+
 </template>
 
 <script>
-import mixin from "@/mixin"
+import mixin from "@/mixin/index.vue"
 
 export default {
   name: "index",
@@ -15,13 +17,13 @@ export default {
   mixins: [mixin],
   data() {
     return {
-      message: 'waowao'
+      message: 'waowao',
     }
   },
   created() {
     //merge test
-    console.log('hello组件的钩子被调用了');
-    console.log(this.message);
+    console.log(this);
+    this.num++;
   },
   mounted() {
     console.log(Number.isNaN(1));

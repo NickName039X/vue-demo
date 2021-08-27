@@ -33,9 +33,8 @@ let p2 = new Promise(function (resolve, reject) {
 });
 
 
-// var a = function () { };
-setTimeout(p2, 300);
-console.log(10);
+// setTimeout(p2, 300);
+// console.log(10);
 
 // 4 10 3
 

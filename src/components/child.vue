@@ -24,6 +24,7 @@
         style="margin-top: 10px"
         v-bind="$attrs"
       ></template1>
+      
       <!--2.传递非props-->
       <template1
         style="margin-top: 10px"
