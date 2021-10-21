@@ -11,6 +11,7 @@ var activity = {
 var str = JSON.parse(JSON.stringify(activity));
 console.log(str);
 
+
 //JSON是JavaScript的子集
 
 
