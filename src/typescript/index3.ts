@@ -20,3 +20,9 @@ loggingIdentity(b);
 
 // getProperty(x, "a"); // okay
 // getProperty(x, "m"); // error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.
+
+/**-------------------------------- */
+
+
+
+/**-------------------------------- */

@@ -115,7 +115,7 @@ type a1 = CapitalizeString<'handler'>       // Handler
 type a2 = CapitalizeString<'parent'>        // Parent
 type a3 = CapitalizeString<233>             // 233
 
-type a4 = MyCapitalizeString<'before'>             // before
+type a4 = MyCapitalizeString<'before'>             // Before
 type a5 = MyCapitalizeString<2333>             // 2333
 type a6 = MyCapitalizeString<true>             // true
 
@@ -126,5 +126,10 @@ type Greeting = "Hello, world"
 type ShoutyGreeting = Uppercase<Greeting>
 
 /**-------------------------------- */
+type isNever<T> = T extends never ? true : false;
+type isA = isNever<never>;
+type isB = isNever<undefined>;
+
+const v1: isB = false;
 
 
