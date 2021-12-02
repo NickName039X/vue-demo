@@ -20,3 +20,19 @@ let y: Tuple;
 y = ['hook', 20];
 y[3] = 'world';
 console.log(y);
+
+type MyBool = true | false;
+
+enum Color {Red, Green, Blue}
+let c: Color = Color.Green;
+
+/**-------------------------------- */
+
+// function error(message: string): never {
+//     throw new Error(message);
+// }
+// const a = error('1');
+// console.log(a);
+
+let a = 'foo';
+a = null;
