@@ -132,4 +132,47 @@ type isB = isNever<undefined>;
 
 const v1: isB = false;
 
+/**-------------------------------- */
+
+type MyNonNullable<传入类型> = 传入类型 extends (null | undefined) ? never : 传入类型
+type D = MyNonNullable<'a' | 'b' | null | undefined> // 'a' | 'b'
+
+
+
+type LastChar<T, TT = never> = T extends `` ? TT : T extends `${infer L}${infer R}` ? LastChar<R, L> : never
+
+type A = LastChar<'BFE'> // 'E'
+type B = LastChar<'dev'> // 'v'
+type C = LastChar<''> // never
+
+type a11 = '1234567' extends `${infer L}${infer M}${infer R}` ? L : never     //1
+type b11 = '1234567' extends `${infer L}${infer M}${infer R}` ? M : never     //2
+type c11 = '1234567' extends `${infer L}${infer M}${infer R}` ? R : never     //34567
+
+
+type firstTwo<T> = T extends `${infer LL}${infer R}` ? LL : T
+type f1 = firstTwo<'fang'>
+
+/**-------------------------------- */
+
+type TypeCond<T, U> = T extends never ? {a: U} : {b: U};
+
+let test: TypeCond<never, number>;
+
+type Foo1 = never extends never ? true : false // gives true
+//but
+type Bar<T> = T extends never ? true : false
+type Baz = Bar<never> // not `true` as expected but `never`!
+
+/**-------------------------------- */
+type Alias = { num: number }
+interface Interface {
+    num: number;
+}
+declare function aliased(arg: Alias): Alias;
+declare function interfaced(arg: Interface): Interface;
+
+/**-------------------------------- */
+
+
 

@@ -23,6 +23,10 @@ loggingIdentity(b);
 
 /**-------------------------------- */
 
+type IsNever<传入类型> = 传入类型 extends never ? true : false;
 
+type A1 = IsNever<true> // false
+type B1 = IsNever<never> // true
+type C1 = IsNever<undefined> // false
 
 /**-------------------------------- */
