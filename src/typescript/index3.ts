@@ -30,3 +30,61 @@ type B1 = IsNever<never> // true
 type C1 = IsNever<undefined> // false
 
 /**-------------------------------- */
+
+type BoxedValue<T> = { value: T };
+type BoxedArray<T> = { array: T[] };
+type Boxed<T> = T extends any[] ? BoxedArray<T[number]> : BoxedValue<T>;
+
+type T20 = Boxed<string>;  // BoxedValue<string>;
+type T21 = Boxed<number[]>;  // BoxedArray<number>;
+type T23 = Boxed<boolean[]>;  // BoxedArray<noolean>;
+type T24 = Boxed<symbol[]>;  // BoxedArray<symbol>;
+type T22 = Boxed<string | number[]>;  // BoxedValue<string> | BoxedArray<number>;
+
+/**-------------------------------- */
+type Diff<T, U> = T extends U ? never : T;  // Remove types from T that are assignable to U
+type Filter<T, U> = T extends U ? T : never;  // Remove types from T that are not assignable to U
+
+type T30 = Diff<"a" | "b" | "c" | "d", "a" | "c" | "f">;  // "b" | "d"
+type T31 = Filter<"a" | "b" | "c" | "d", "a" | "c" | "f">;  // "a" | "c"
+type T32 = Diff<string | number | (() => void), Function>;  // string | number
+type T33 = Filter<string | number | (() => void), Function>;  // () => void
+
+type NonNullable1<T> = Diff<T, null | undefined>;  // Remove null and undefined from T
+
+type T34 = NonNullable1<string | number | undefined>;  // string | number
+type T35 = NonNullable1<string | string[] | null | undefined>;  // string | string[]
+
+function f1<T>(x: T, y: NonNullable1<T>) {
+    x = y;  // Ok
+    // y = x;  // Error
+}
+
+function f2<T extends string | undefined>(x: T, y: NonNullable1<T>) {
+    x = y;  // Ok
+    // y = x;  // Error
+    let s1: string = x;  // Error
+    let s2: string = y;  // Ok
+}
+
+
+/**-------------------------------- */
+
+function invokeLater(args: any[], callback: (...args: any[]) => void) {
+    /* ... Invoke callback with 'args' ... */
+}
+
+// Unsound - invokeLater "might" provide any number of arguments
+invokeLater([1, 2], (x, y) => console.log(x + ', ' + y));
+
+// Confusing (x and y are actually required) and undiscoverable
+invokeLater([1, 2], (x?, y?) => console.log(x + ', ' + y));
+
+/**-------------------------------- */
+enum Status { Ready, Waiting };
+enum Color { Red, Blue, Green };
+
+let s1 = Status.Ready;
+s1 = 7;  // ok 数字类型可以分配给枚举类型
+
+/**-------------------------------- */
