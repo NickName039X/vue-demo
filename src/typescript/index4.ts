@@ -56,3 +56,20 @@ function listenEvent(eventType: EventType, handler: (n: Event) => void) {
 }
 
 /**-------------------------------- */
+// ts推倒出来类型为bigint
+let a = BigInt(Number.MAX_SAFE_INTEGER);
+
+
+// 将属性变成boolean类型
+type OptionsFlags<Type> = {
+    [Property in keyof Type]: boolean;
+};
+  
+type FeatureFlags = {
+    darkMode: () => void;
+    newUserProfile: () => void;
+  };
+   
+  //把函数类型变成了boolean类型
+type FeatureOptions = OptionsFlags<FeatureFlags>;
+  
