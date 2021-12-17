@@ -34,15 +34,21 @@ type ant3 = ant2<any, string>;
 // ts元组转联合
 
 type TTuple = [string, number];
-type tt0 = TTuple[0];
+type tt0 = TTuple[0|1];
 type Res = TTuple[number]; // string | number 
+
+type TupleToUnion<T extends any[]> = T[number]
+
+type Foo = [string, number, boolean]
+
+type Bar = TupleToUnion<Foo> // string | number | boolean
 
 /**-------------------------------- */
 
 enum EventType { Mouse, Keyboard }
 
 interface Event { timestamp: number; }
-interface MouseEvent extends Event { x: number; y: number }
+interface MouseEvent extends Event { x1: number; y1: number }
 interface KeyEvent extends Event { keyCode: number }
 
 function listenEvent(eventType: EventType, handler: (n: Event) => void) {

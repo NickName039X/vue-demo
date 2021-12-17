@@ -87,4 +87,25 @@ enum Color { Red, Blue, Green };
 let s1 = Status.Ready;
 s1 = 7;  // ok 数字类型可以分配给枚举类型
 
+
+/**-------------------------------- */
+
+// 获取元组数组的第一个类型
+type FirstItem<T> = T extends [infer L, ...infer R] ? L : never
+
+type A = FirstItem<[string, number, boolean]> // string
+type B = FirstItem<['B', 'F', 'E']> // 'B'
+
+// 获取元组数组的最后一类型
+type LastItem<T> = T extends [...infer L, infer R] ? R : never
+type A11 = LastItem<[string, number, boolean]> // boolean
+type B11 = LastItem<['B', 'F', 'E']> // 'E'
+type C11 = LastItem<[]> // never
+
+// 推断promise的return类型
+type UnwrapPromise<T> = T extends Promise<infer T> ? T : never
+type u1 = UnwrapPromise<Promise<string>> // string
+type u2 = UnwrapPromise<Promise<null>> // null
+// type C = UnwrapPromise<null> // Error
+
 /**-------------------------------- */
