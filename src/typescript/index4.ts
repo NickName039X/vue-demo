@@ -72,4 +72,14 @@ type FeatureFlags = {
    
   //把函数类型变成了boolean类型
 type FeatureOptions = OptionsFlags<FeatureFlags>;
+
+/**-------------------------------- */
+// 获取一个map中所有值的类型
+
+type ValueTypeFromMap<T> = { [k in keyof T]: T[k] }[keyof T]
+
+type a111 = ValueTypeFromMap<{ name: string, age: number, flag?: boolean }>
+// string|number|boolean|undefined
+
+export default {}
   

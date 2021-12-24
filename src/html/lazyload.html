@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>图片懒加载</title>
+        <style type="text/css">
+            .imgUnitContainer {
+                height: 300px; /* 固定一个高度 */
+                width: 500px; /* 固定一个宽度 */
+                overflow: hidden; /* 图片超出容器则隐藏 */
+                border: 1px solid #eee; /* 边框 */
+                margin: 10px; /* 外边框 */
+                display: flex; /* 弹性布局 */
+                align-items: center; /* 垂直居中 */
+                justify-content: center; /* 水平居中 */
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container"></div>
+        /* 图片容器 */
+    </body>
+
+    <script type="text/javascript">
+        let imgNodeList = []; // 所有懒加载图片的引用
+        (function() {
+            let imgUrlArr = [
+                // 所有需要加载的图片链接
+                "imgUrl",
+                "imgUrl",
+                "imgUrl",
+                "imgUrl",
+                "imgUrl",
+                "imgUrl",
+                "imgUrl",
+                "imgUrl",
+                "imgUrl"
+            ];
+            let innerContainer = document.createElement("div"); // 最小化操作DOM, 全部图片首先加载到此节点, 最后一并挂载到图片容器
+            imgUrlArr.forEach(v => {
+                // 遍历图片的引用
+                let imgUnitContainer = document.createElement("div"); // 图片外层div, 主要为统一图片尺寸
+                imgUnitContainer.className = "imgUnitContainer"; // 设置class
+                let img = new Image(); // new一个img节点
+                img.src =
+                    "https://cdn.jsdelivr.net/gh/sentsin/layui@15d7241/dist/css/modules/layer/default/loading-2.gif"; // 显示loading
+                img.setAttribute("data-src", v); // 存储真实需要加载的url
+                img.setAttribute("loaded", "no"); // 存储图片是否加载完成
+                imgNodeList.push(img); // 将节点引用加入数组
+                imgUnitContainer.appendChild(img); // 将img加入外层div
+                innerContainer.appendChild(imgUnitContainer); // 将外层div加入内部容器
+            });
+            document.getElementById("container").appendChild(innerContainer);
+        })();
+
+        const lazylod = () => {
+            let height = window.innerHeightl; // 可视区域高度
+            let scrollTop =
+                document.documentElement.scrollTop || document.body.scrollTop; // 滚动区域高度
+            imgNodeList.forEach(v => {
+                // 遍历
+                if (v.getAttribute("loaded") === "yes") return; // 如果已经加载完成, 便不再重复加载
+                if (height + scrollTop > v.offsetTop) {
+                    v.setAttribute("loaded", "yes"); // 首先设置已加载避免重复
+                    let tmp = new Image(); // new一个缓存img节点, 主要是为了实现隐式加载
+                    tmp.src = v.getAttribute("data-src"); // 设置缓存节点的src使其开始加载
+                    tmp.onload = () => {
+                        // 缓存img加载完成
+                        v.src = v.getAttribute("data-src"); // 缓存img加载完成后将真实url赋值文档显示的图片节点, 浏览器会直接读取缓存
+                    };
+                }
+            });
+        };
+
+        window.sroll = () => {
+            lazyload();
+        };
+        window.onload = () => {
+            lazyload();
+        };
+    </script>
+</html>

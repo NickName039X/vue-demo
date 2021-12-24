@@ -70,7 +70,9 @@ class StandardsAudit {
   
     private multipleSelection = []
 
-  }
+}
+  
+export default {}
   
   
   

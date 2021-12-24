@@ -109,3 +109,4 @@ type u2 = UnwrapPromise<Promise<null>> // null
 // type C = UnwrapPromise<null> // Error
 
 /**-------------------------------- */
+export default {} //使用模块避免不同的typescript文件中存在相同的变量命名冲突

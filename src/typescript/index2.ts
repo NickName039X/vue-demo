@@ -173,6 +173,6 @@ declare function aliased(arg: Alias): Alias;
 declare function interfaced(arg: Interface): Interface;
 
 /**-------------------------------- */
-
+export default {}
 
 
