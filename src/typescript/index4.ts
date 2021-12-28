@@ -62,7 +62,7 @@ let a = BigInt(Number.MAX_SAFE_INTEGER);
 
 // 将属性变成boolean类型
 type OptionsFlags<T> = {
-    //修饰符 一前一后
+    //修饰符 一前一后 readonly 去掉可读类型；-?去掉可选类型 
   -readonly [k in keyof T] -?: Boolean;
 };
   
