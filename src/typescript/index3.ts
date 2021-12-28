@@ -109,4 +109,11 @@ type u2 = UnwrapPromise<Promise<null>> // null
 // type C = UnwrapPromise<null> // Error
 
 /**-------------------------------- */
+
+type PickAndRequired<T, K extends keyof T> = {
+    [Key in K]-? : T[Key]
+  }
+type yyyy = PickAndRequired<{ name?: string, age?: number, flag?: boolean, id: object }, 'name' | 'flag' | 'id'>
+  
+/**-------------------------------- */
 export default {} //使用模块避免不同的typescript文件中存在相同的变量命名冲突

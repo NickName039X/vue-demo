@@ -61,13 +61,17 @@ let a = BigInt(Number.MAX_SAFE_INTEGER);
 
 
 // 将属性变成boolean类型
-type OptionsFlags<Type> = {
-    [Property in keyof Type]: boolean;
+type OptionsFlags<T> = {
+    //修饰符 一前一后
+  -readonly [k in keyof T] -?: Boolean;
 };
   
 type FeatureFlags = {
     darkMode: () => void;
     newUserProfile: () => void;
+    name?: 'fangtao',
+    readonly age: 20,
+
   };
    
   //把函数类型变成了boolean类型

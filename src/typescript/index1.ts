@@ -1,4 +1,4 @@
-type Form = {
+export type Form = {
     status: number
     type: string
     timeType: string
@@ -72,7 +72,9 @@ class StandardsAudit {
 
 }
   
-export default {}
+export default {
+
+}
   
   
   
