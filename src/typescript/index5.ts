@@ -44,6 +44,21 @@ type C = StringToTuple<'fa'> // []
 type D = StringToTuple<'fang'|'tao'> // []
 /**-------------------------------- */
 
+//元组转字符串
+type TupleToString<T, Prev extends string = ''> = T extends [infer L, ...infer R] ? (L extends `${infer LL}` ? TupleToString<R, `${Prev}${LL}`> : '') : Prev
+
+//下面是我的写法 会有问题，暂时不知道怎么解决
+// type TupleToString<T extends any[], TT extends string = ''> = T extends [] ? TT : T extends [infer L, ...infer R] ? TupleToString<R, `${L}`> : never;
+type A0 = TupleToString<['a', 'b', 'c']> // 'abc'
+type B0 = TupleToString<[]>              // ''
+type C0 = TupleToString<['a']>           // 'a'
+
+
+type TupleToString111<T, Prev extends string = ''> = T extends [infer L, ...infer R] ? (L extends `${infer LL}${infer RR}` ? TupleToString<R, `${Prev}${LL}`> : '') : Prev
+type A111 = TupleToString<['abc', 'd', 'e']>
+
+/**-------------------------------- */
+
 // 反转元组
 type ReverseTuple<T, TT extends any[] = []> = T extends [infer L, ...infer R] ? ReverseTuple<R, [L, ...TT]> : TT
 
@@ -52,6 +67,7 @@ type B1 = ReverseTuple<[1, 2, 3]> // [3,2,1]
 type C1 = ReverseTuple<[]> // []
 
 /**-------------------------------- */
-// TODO 判断是否为没有属性的对象类型
 
+// TODO 判断是否为没有属性的对象类型
+type a = keyof string;
 export default {}
