@@ -9,3 +9,5 @@ http:{
       gzip_types text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png; #  压缩文件类型 
 }
 ```
+
+# 包含了最新的typescript练习题
