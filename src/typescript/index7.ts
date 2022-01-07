@@ -69,4 +69,6 @@ type A11 = Flat<[1, 2, 3, [4]]> // [1,2,3]
 type B11 = Flat<[1, [2, 3], [4, [5, [6]]]]> // [1,2,3,4,5,6]
 type C11 = Flat<[]> // []
 type D11 = Flat<[1]> // [1]
+
+
 export default {}
