@@ -1,4 +1,6 @@
-// promise采用了揭示模式。 revealing module
+// promise采用了揭示模式。 
+// revealing module
+// es5实现
 var promise = function(fn) {
     this.status = "pending"; //初始状态
     this.success = undefined;
@@ -13,7 +15,7 @@ var promise = function(fn) {
             that.success = val;
             // console.log(that.onFulfilledCallback);
             that.onFulfilledCallback.forEach(item => {
-                item(that.success);
+                item(); //可不传参
             });
         }
     }
