@@ -48,8 +48,8 @@ var promise = function(fn) {
                     resolve(res); //需要手动触发
                 });
                 that.onRejectedCallback.push(() => {
-                    let res = onRejected(that.error);
-                    reject(res); //需要手动触发
+                    let err = onRejected(that.error);
+                    reject(err); //需要手动触发
                 });
             }
         });
@@ -68,6 +68,7 @@ var a = new promise((resolve, reject) => {
 })
     .then(
         res => {
+            console.log("then1", res);
             return 2;
         },
         err => {
