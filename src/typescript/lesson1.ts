@@ -1,4 +1,4 @@
-
+// declare module的作用是扩展模块
 declare module '@/mixins/PagingData' {
     export const PagingData: any
   }

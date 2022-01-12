@@ -58,6 +58,10 @@ var promise = function(fn) {
 
         return myPromise; // 链式操作
     };
+
+    promise.prototype.catch = function (callback) {
+        return this.then(function () { }, callback);
+    }
 };
 var a = new promise((resolve, reject) => {
     console.log(111);
