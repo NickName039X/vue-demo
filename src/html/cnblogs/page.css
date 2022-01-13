@@ -1,0 +1,113 @@
+body {
+    background: #2c3e50; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #2c3e50,
+        #4ca1af
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #2c3e50,
+        #4ca1af
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    cursor: url("https://blog-static.cnblogs.com/files/lucas--liu/cat6.ico"),
+        auto;
+}
+
+.day {
+    font-size: 0.8rem;
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+#navList a:hover {
+    color: #f0dfc1;
+}
+
+#navList a {
+    margin-left: 20px;
+}
+.postTitle {
+    font-size: 16px;
+}
+
+#green_channel {
+    position: fixed;
+    bottom: 20px;
+    max-width: 64px;
+    overflow: hidden;
+    padding: 5px;
+    white-space: nowrap;
+    /*偏青绿色*/
+    background: #99cc99;
+    border: 1px dashed #99cc99;
+    border-radius: 8px;
+    transition: 0.3s linear;
+}
+
+#green_channel:hover {
+    max-width: 360px;
+}
+
+.topicListFooter {
+    background-color: inherit;
+}
+
+
+
+.catListTitle{
+    background: inherit;
+}
+
+#mylinks{
+    background: inherit;
+}
+
+#calendar{
+    display: none;
+}
+
+#sidebar_search{
+    display: none;
+}
+
+#cnblogs_ch{
+    display: none;
+}
+
+#footer{
+    background-color: inherit;
+    display: none;
+}
+
+#HistoryToday{
+    display: none;
+}
+
+#cnblogs_c2{
+    display: none;
+}
+
+#under_post_card1{
+    display: none;
+}
+
+#cnblogs_c1{
+    display: none;
+}
+
+#right_content {
+    margin: 0 0 0 250px;
+    background: #0f2027; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #2c5364,
+        #203a43,
+        #0f2027
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #2c5364,
+        #203a43,
+        #0f2027
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
