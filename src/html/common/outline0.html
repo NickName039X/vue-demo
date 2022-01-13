@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>outline的运用</title>
+</head>
+<body>
+	
+<!-- 展开效果 -->
+<ul class="father">
+		<li class="son">1</li>
+		<li class="son">2</li>
+		<li class="son">3</li>
+		<li class="son">4</li>
+		<li class="son">5</li>
+	</ul>
+</body>
+</html>
+
+<style lang="css">
+		*{
+			font-size: 16px;
+			font-family:'Courier New', Courier, monospace;
+			list-style: none;
+			box-sizing: border-box;
+			margin: 0;
+			padding:0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+
+		.father{
+			max-height: 60px;
+			overflow: hidden;
+			transition: 0.3s ease-in;
+			cursor: pointer;
+			/* border: 1px solid #cccccc; */
+			width: 100%;
+			/* height: 100%; */
+		}
+		.father:hover{
+			max-height: 300px;
+		}
+		.son{
+			height: 60px;
+			width: 100%;
+			text-align: center;
+			box-sizing: border-box;
+			padding:10px;
+			line-height: 20px;
+			border: 10px solid pink;
+	
+		}
+	
+		.son:hover{
+			outline:1000px solid rgba(0,0,0,0.4);
+		}
+	
+		.son+.son{
+			margin-top: -10px;
+		}
+	</style>

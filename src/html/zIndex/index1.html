@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>zIndex堆叠上下文，随便玩玩</title>
+</head>
+<!--堆叠上下文 
+    z-index<0  ==> background ==> border ==> div ==> 浮动元素 ==> 内联元素 ==> 定位元素 ==> z-index>0
+-->
+<div class="parent">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+    <div class="c4"></div>
+    <div class="c5"></div>
+    <div class="c6"></div>
+</div>
+
+<style>
+    .parent {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        background: green;
+        opacity: 0.5;
+        z-index: 0;
+    }
+
+    .box6 {
+        width: 60px;
+        height: 60px;
+        background: orange;
+        opacity: 0.5;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: -3;
+    }
+
+    .box5 {
+        width: 80px;
+        height: 80px;
+        background: rgba(30, 30, 230, 0.5);
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        z-index: -2
+    }
+
+    .box4 {
+        width: 100px;
+        height: 100px;
+        background: cyan;
+        opacity: 0.5;
+        position: absolute;
+        right: 40px;
+        bottom: 40px;
+        z-index: -1
+    }
+
+
+    .box3 {
+        width: 100px;
+        height: 100px;
+        background: cyan;
+        opacity: 0.5;
+        position: absolute;
+        left: 40px;
+        top: 40px;
+        z-index: -1;
+    }
+    
+    .box2 {
+        width: 80px;
+        height: 80px;
+        background: rgba(30, 30, 230, 0.5);
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index: -2;
+
+    }
+    
+    .box1 {
+        width: 60px;
+        height: 60px;
+        background: orange;
+        opacity: 0.5;
+        position: absolute;
+        z-index: -3;
+    }
+
+
+
+    .c6 {
+        width: 60px;
+        height: 60px;
+        background: orange;
+        opacity: 0.5;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -3;
+    }
+
+    .c5 {
+        width: 80px;
+        height: 80px;
+        background: rgba(30, 30, 230, 0.5);
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: -2
+    }
+
+    .c4 {
+        width: 100px;
+        height: 100px;
+        background: cyan;
+        opacity: 0.5;
+        position: absolute;
+        right: 40px;
+        top: 40px;
+        z-index: -1
+    }
+
+
+    .c3 {
+        width: 100px;
+        height: 100px;
+        background: cyan;
+        opacity: 0.5;
+        position: absolute;
+        left: 40px;
+        bottom: 40px;
+        z-index: -1;
+    }
+    
+    .c2 {
+        width: 80px;
+        height: 80px;
+        background: rgba(30, 30, 230, 0.5);
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        z-index: -2;
+
+    }
+    
+    .c1 {
+        width: 60px;
+        height: 60px;
+        background: orange;
+        opacity: 0.5;
+        position: absolute;
+        z-index: -3;
+        left: 0;
+        bottom: 0;
+    }
+
+</style>
+
+</html>

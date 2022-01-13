@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .container {
+            margin-right: -10px;
+        }
+
+        .row {
+            box-sizing: border-box;
+            padding-right: 10px;
+            width: 25%;
+            height: 100px;
+            float: left;
+            border: 1px solid red;
+        }
+
+        .container::before {
+            display: table;
+            content: '';
+        }
+
+        .container::after {
+            display: table;
+            content: '';
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">第一列</div>
+        <div class="row">第二列</div>
+        <div class="row">第三列</div>
+        <div class="row">第四列</div>
+    </div>
+</body>
+
+</html>
+<script>
+    document.body.contentEditable = true;
+</script>

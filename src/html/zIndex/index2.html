@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container container2">
+        <div class="inline-block">#divA inline-block</div>
+        <div class="float">
+            <div style="position: absolute;z-index:-6;background: cyan;width:40px;height:40px"></div>
+            <div style="position: absolute;z-index:-3;background: orange;width:40px;height:40px"></div>
+        </div>
+    </div>
+
+    <div class="container container2">
+        <div class="float"> #divB float:left</div>
+        <div class="inline-block">#divA inline-block</div>
+    </div>
+</body>
+
+</html>
+<style>
+    .container {
+        position: relative;
+        background: #ddd;
+    }
+    
+    .container>div {
+        width: 200px;
+        height: 200px;
+        opacity: 0.9;
+        /* opacity不为0形成 堆叠上下文 */
+    }
+    
+    .float {
+        float: left;
+        background-color: deeppink;
+        z-index: 1
+    }
+    
+    .inline-block {
+        display: inline-block;
+        background-color: yellowgreen;
+        margin-left: -100px;
+    }
+</style>

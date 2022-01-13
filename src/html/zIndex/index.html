@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="dad">
+        <div class="son"></div>
+    </div>
+    <div class="mom">
+        <div class="son"></div>
+    </div>
+
+    <!--ul>li.item$*5{1$$$$$$$$$0}-->
+    <ul>
+        <li class="item1">10000000010</li>
+        <li class="item2">10000000020</li>
+        <li class="item3">10000000030</li>
+        <li class="item4">10000000040</li>
+        <li class="item5">10000000050</li>
+    </ul>
+    
+</body>
+</html>
+<script>
+    var arr = undefined === null;
+    console.log(arr);
+    debugger;
+    var b = 4;
+    console.log(undefined === 0);
+</script>
+<style>
+    .dad,.mom{
+        position: relative;
+        height: 100px;
+        margin-bottom: 20px;
+        background: cyan;
+    }
+
+    .mom{
+        z-index: 0;
+    }
+
+    .son{
+        width: 100px;
+        height: 100px;
+        background:lightgreen;
+        position: absolute;
+        z-index: -1;
+    }
+</style>

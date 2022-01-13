@@ -1,0 +1,177 @@
+<div class="clock-bg">
+  <span id="wu"></span>
+  <div class="clock">
+    <div class="hours-con">
+      <div class="hours"></div>
+    </div>
+    <div class="minutes-con">
+      <div class="minutes"></div>
+    </div>
+    <div class="seconds-con">
+      <div class="seconds"></div>
+    </div>
+  </div>
+  <span class="address">上海</span>
+</div>
+
+<style>
+  /*表盘*/
+  .clock-bg {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, #484848 0%, #393939 25%, #494949 50%, #494949 50%, #040404 50%, #0d0d0d 75%, #11110f 100%);
+    border: 2px solid #010101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .clock {
+    width: 100px;
+    height: 100px;
+    background: #fff url(https://cssanimation.rocks/images/posts/clocks/ios_clock.svg) no-repeat center center;
+    margin: 6px 0;
+    position: relative;
+    border-radius: 50%;
+    background-size: 80%;
+    box-shadow: 0 0 2px rgba(67, 67, 67, 0.3);
+  }
+
+  .address {
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  }
+
+  #wu {
+    color: #101010;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .clock::after {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    background: #e43c39;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #454449;
+    content: "";
+    display: block;
+  }
+
+  .hours-con,
+  .minutes-con,
+  .seconds-con {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  /*时针*/
+  .hours {
+    position: absolute;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 30px solid #000;
+    top: 22%;
+    left: 50%;
+    margin-left: -4px;
+    transform-origin: 50% 100%;
+  }
+
+  /*分针*/
+  .minutes {
+    position: absolute;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 40px solid #000;
+    top: 10%;
+    left: 50%;
+    margin-left: -4px;
+    transform-origin: 50% 100%;
+  }
+
+  /*秒针*/
+  .seconds-con {
+    z-index: 12;
+  }
+
+  .seconds {
+    position: absolute;
+    width: 2px;
+    height: 48%;
+    top: 2%;
+    left: 50%;
+    background: #e43c39;
+    transform-origin: 50% 100%;
+  }
+
+
+  /* 添加动画 */
+  .hours-con {
+    animation: rotate 43200s infinite linear;
+  }
+
+  .minutes-con {
+    animation: rotate 3600s infinite steps(60);
+  }
+
+  .seconds-con {
+    animation: rotate 60s infinite steps(60);
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+
+<script>
+  window.onload = function () {
+    // 初始化静态时钟刻度
+    init();
+    function init() {
+      initLocalClocks();
+    }
+
+    //初始化表盘刻度
+    function initLocalClocks() {
+      var date = new Date;
+      var hour = date.getHours();
+      var min = date.getMinutes();
+      var sec = date.getSeconds();
+      var hands = [
+        {
+          hand: 'hours',
+          angle: hour * 30 + min / 2
+        },
+        {
+          hand: 'minutes',
+          angle: min * 6
+        },
+        {
+          hand: 'seconds',
+          angle: sec * 6
+        }
+      ]
+      for (var i = 0; i < hands.length; i++) {
+        var elements = document.querySelectorAll("." + hands[i].hand);
+
+        for (var j = 0; j < elements.length; j++) {
+          elements[j].style.transform = 'rotate(+' + hands[i].angle + 'deg)';
+          elements[j].style.WebkitTransform = 'rotate(' + hands[i].angle + 'deg)';
+        }
+      }
+    }
+  }
+</script>

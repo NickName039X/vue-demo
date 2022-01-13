@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<script>
+    var obj = {
+        a: '2',
+        b: { c: 'test' },
+        c: [
+            { id: 1, name: 'xx' },
+            { id: 2, name: 'yy', info: { d: 4 } }
+        ]
+    };
+    function objectToFormData(obj, form, namespace) {
+        const fd = form || new FormData();
+        let formKey;
+
+        for (var property in obj) {
+            if (obj.hasOwnProperty(property)) {
+                let key = Array.isArray(obj) ? '[]' : `[${property}]`;
+                if (namespace) {
+                    formKey = namespace + key;
+                } else {
+                    formKey = property;
+                }
+                // console.log(formKey);
+
+                // if the property is an object, but not a File, use recursivity.
+                if (typeof obj[property] === 'object' && !(obj[property] instanceof File)) {
+                    objectToFormData(obj[property], fd, formKey);
+                } else {
+
+                    // if it's a string or a File object
+                    fd.append(formKey, obj[property]);
+                    console.log(formKey,obj[property]);
+                }
+
+            }
+        }
+        return fd;
+    }
+
+    let result = objectToFormData(obj);
+    console.log(result)
+</script>
