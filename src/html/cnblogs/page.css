@@ -1,4 +1,5 @@
 body {
+    scroll-behavior: smooth;
     background: #2c3e50; /* fallback for old browsers */
     background: -webkit-linear-gradient(
         to right,
@@ -26,20 +27,29 @@ body {
 #navList a {
     margin-left: 20px;
 }
-.postTitle {
-    font-size: 16px;
-}
 
 #green_channel {
     position: fixed;
     bottom: 20px;
+    margin-bottom: 0;
+    right: 100px;
     max-width: 64px;
     overflow: hidden;
     padding: 5px;
     white-space: nowrap;
-    /*偏青绿色*/
-    background: #99cc99;
-    border: 1px dashed #99cc99;
+    background: #aa4b6b; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to bottom,
+        #3b8d99,
+        #6b6b83,
+        #aa4b6b
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to bottom,
+        #3b8d99,
+        #6b6b83,
+        #aa4b6b
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: 8px;
     transition: 0.3s linear;
 }
@@ -52,46 +62,44 @@ body {
     background-color: inherit;
 }
 
-
-
-.catListTitle{
+.catListTitle {
     background: inherit;
 }
 
-#mylinks{
+#mylinks {
     background: inherit;
 }
 
-#calendar{
+#calendar {
     display: none;
 }
 
-#sidebar_search{
+#sidebar_search {
     display: none;
 }
 
-#cnblogs_ch{
+#cnblogs_ch {
     display: none;
 }
 
-#footer{
+#footer {
     background-color: inherit;
     display: none;
 }
 
-#HistoryToday{
+#HistoryToday {
     display: none;
 }
 
-#cnblogs_c2{
+#cnblogs_c2 {
     display: none;
 }
 
-#under_post_card1{
+#under_post_card1 {
     display: none;
 }
 
-#cnblogs_c1{
+#cnblogs_c1 {
     display: none;
 }
 
@@ -111,3 +119,14 @@ body {
         #0f2027
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+.post {
+    padding: 30px;
+}
+
+#commentform_title {
+    display: none;
+}
+/* .postTitle {
+    font-size: 16px;
+} */

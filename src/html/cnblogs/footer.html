@@ -1,25 +1,38 @@
 <div class="back-top">TOP</div>
 <script>
-	(function () {
-		$('.back-top').click(function () {
-			window.scrollTo(0, 0);
-		})
-	})();
+    (function() {
+        $(".back-top").click(function() {
+            window.scrollTo({"behavior": "smooth", "top": 0});
+        });
+    })();
 </script>
 <style>
-	.back-top {
-		position: fixed;
-		bottom: 20px;
-		right: 20px;
-		width: 50px;
-		height: 50px;
-		line-height: 50px;
-		text-align: center;
-		background: #ff6666;
-		-webkit-border-radius: 8px;
-		-moz-border-radius: 8px;
-		border-radius: 8px;
-		color: #fff;
-		cursor: pointer;
-	}
+    .back-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background: #aa4b6b; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+            to bottom,
+            #3b8d99,
+            #6b6b83,
+            #aa4b6b
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+            to bottom,
+            #3b8d99,
+            #6b6b83,
+            #aa4b6b
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+    }
 </style>

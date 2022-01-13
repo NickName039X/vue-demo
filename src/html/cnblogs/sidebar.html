@@ -1,190 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<title>Document</title>
-</head>
+    <body>
+        <p class="mybanner">https://github.com/whxmm0608</p>
 
-<body>
-	<p class="mybanner">https://github.com/whxmm0608</p>
+        <script>
+            //js雪花特效
+            (function($) {
+                $.fn.snow = function(options) {
+                    var $flake = $('<div id="flake" />')
+                            .css({ position: "absolute", top: "-50px" })
+                            .html("&#10052;"),
+                        documentHeight = $(document).height(),
+                        documentWidth = $(document).width(),
+                        defaults = {
+                            minSize: 10,
+                            maxSize: 20,
+                            newOn: 2000,
+                            flakeColor: "red"
+                        },
+                        options = $.extend({}, defaults, options);
+                    var interval = setInterval(function() {
+                        var startPositionLeft =
+                                Math.random() * documentWidth - 100,
+                            startOpacity = 0.5 + Math.random(),
+                            sizeFlake =
+                                options.minSize +
+                                Math.random() * options.maxSize,
+                            endPositionTop = documentHeight - 40,
+                            endPositionLeft =
+                                startPositionLeft - 100 + Math.random() * 200,
+                            durationFall =
+                                documentHeight * 10 + Math.random() * 5000;
+                        $flake
+                            .clone()
+                            .appendTo("body")
+                            .css({
+                                left: startPositionLeft,
+                                opacity: startOpacity,
+                                "font-size": sizeFlake,
+                                color: options.flakeColor
+                            })
+                            .animate(
+                                {
+                                    top: endPositionTop,
+                                    left: endPositionLeft,
+                                    opacity: 0.6
+                                },
+                                durationFall,
+                                "linear",
+                                function() {
+                                    $(this).remove();
+                                }
+                            );
+                    }, options.newOn);
+                };
+            })(jQuery);
 
+            $.fn.snow({
+                minSize: 10,
+                maxSize: 50,
+                newOn: 2000,
+                flakeColor: "#ffffff"
+            });
 
-	<script>
-		//js雪花特效
-		(function ($) {
-			$.fn.snow = function (options) {
-				var $flake = $('<div id="flake" />').css({ 'position': 'absolute', 'top': '-50px' }).html('&#10052;'),
-					documentHeight = $(document).height(),
-					documentWidth = $(document).width(),
-					defaults = { minSize: 10, maxSize: 20, newOn: 2000, flakeColor: "red" },
-					options = $.extend({}, defaults, options);
-				var interval = setInterval(function () {
+            $(document).ready(function() {
+                $("#sidebar_shortcut ul").empty();
+                $("#sidebar_shortcut ul")
+                    .prepend(
+                        `<li><a href="http://www.runoob.com/" title="菜鸟教程">菜鸟教程</a></li>`
+                    )
+                    .prepend(
+                        `<li><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客">阮一峰的博客</a></li>`
+                    )
+                    .prepend(
+                        `<li><a href="https://github.com/whxmm0608" title="我的Github Page">我的Github Page</a></li>`
+                    )
+                    .prepend(
+                        `<li><a href="https://cn.vuejs.org/" title="Vue.js官方文档">Vue.js </a></li>`
+                    )
+                    .prepend(
+                        `<li><a href="https://www.angular.cn/" title="Angular官方文档">Angular中文</a></li>`
+                    )
+                    .prepend(
+                        `<li><a href="http://www.bejson.com/" title="在线JSON格式化">BeJson</a></li>`
+                    )
+                    .prepend(
+                        `<li><a href="https://www.cnblogs.com/sosoqi/" title="Sosoqi的博客">Sosoqi的博客</a></li>`
+                    )
+                    .prepend(
+                        `<li><a href="http://vanxkr.com" title="vanxkr的博客">vanxkr的博客</a></li>`
+                    )
+                    .prepend(
+                        `<li><a href="http://www.bejson.com/knownjson/webInterface/" title="免费JSON">免费JSON</a></li>`
+                    );
 
-					var startPositionLeft = Math.random() * documentWidth - 100,
-						startOpacity = 0.5 + Math.random(),
-						sizeFlake = options.minSize + Math.random() * options.maxSize,
-						endPositionTop = documentHeight - 40,
-						endPositionLeft = startPositionLeft - 100 + Math.random() * 200,
-						durationFall = documentHeight * 10 + Math.random() * 5000;
-					$flake.clone().appendTo('body').css({
-						left: startPositionLeft,
-						opacity: startOpacity,
-						'font-size': sizeFlake,
-						color: options.flakeColor
-					}).animate({ top: endPositionTop, left: endPositionLeft, opacity: 0.6 },
-						durationFall, 'linear',
-						function () { $(this).remove() });
+                // $("#blogTitle")
+                // 	.append('<img src="https://pic.cnblogs.com/face/627518/20140424184721.png" class="my-avatar" alt="">');
+            });
+        </script>
 
-				}, options.newOn);
-			};
-		})(jQuery);
+        <style>
+            #navList a:hover {
+                font-size: 18px;
+                color: #333;
+                font-weight: bold;
+                vertical-align: center;
+                display: inline-block;
+            }
 
-		$.fn.snow({ minSize: 10, maxSize: 50, newOn: 2000, flakeColor: '#ffffff' });
+            #navList a {
+                margin-left: 20px;
+            }
 
+            #profile_block {
+                padding: 10px;
+                font-family: "Courier New", Courier, monospace;
+                font-size: 14px;
+                width: 100%;
+            }
 
+            #blogTitle h1 {
+                margin-left: 4em;
+            }
 
-		$(document).ready(function () {
+            #blogTitle h2 {
+                margin-left: 4em;
+            }
 
-			$("#sidebar_shortcut ul").empty();
-			$("#sidebar_shortcut ul")
-				.prepend(
-					`<li><a href="http://www.runoob.com/" title="菜鸟教程">菜鸟教程</a></li>`
-				)
-				.prepend(
-					`<li><a href="http://www.ruanyifeng.com/blog/" title="阮一峰的博客">阮一峰的博客</a></li>`
-				)
-				.prepend(
-					`<li><a href="https://github.com/whxmm0608" title="我的Github Page">我的Github Page</a></li>`
-				)
-				.prepend(
-					`<li><a href="https://cn.vuejs.org/" title="Vue.js官方文档">Vue.js </a></li>`
-				)
-				.prepend(
-					`<li><a href="https://www.angular.cn/" title="Angular官方文档">Angular中文</a></li>`
-				)
-				.prepend(
-					`<li><a href="http://www.bejson.com/" title="在线JSON格式化">BeJson</a></li>`
-				)
-				.prepend(
-					`<li><a href="https://www.cnblogs.com/sosoqi/" title="Sosoqi的博客">Sosoqi的博客</a></li>`
-				)
-				.prepend(
-					`<li><a href="http://vanxkr.com" title="vanxkr的博客">vanxkr的博客</a></li>`
-				)
-				.prepend(
-					`<li><a href="http://www.bejson.com/knownjson/webInterface/" title="免费JSON">免费JSON</a></li>`
-				);
+            #blogTitle {
+                position: relative;
+            }
 
-			// $("#blogTitle")
-			// 	.append('<img src="https://pic.cnblogs.com/face/627518/20140424184721.png" class="my-avatar" alt="">');
-		});
-	</script>
+            #blogTitle .my-avatar {
+                border-radius: 50%;
+                width: 68px;
+                height: 68px;
+                position: absolute;
+                top: calc(50% - 34px);
+                left: calc(50% - 34px);
+            }
 
-	<style>
-		/* start */
-		.day {
-			/* font-size: 0.8rem; */
+            /*hover头像时会滚动*/
+            .my-avatar:hover {
+                transform: rotate(100turn);
+                transition-delay: 1s;
+                transition-property: all;
+                transition-duration: 59s;
+                transition-timing-function: cubic-bezier(0.34, 0, 0.84, 1);
+            }
 
-		}
+            #sidebar_search_box input[type="button"] {
+                padding-left: 10px;
+                padding-right: 10px;
+                border: 1px solid skyblue;
+                background: skyblue;
+                color: #fff;
+            }
 
-		#navList a:hover {
-			font-size: 18px;
-			color: #333;
-			font-weight: bold;
-			vertical-align: center;
-			display: inline-block;
-		}
-
-		#navList a {
-			margin-left: 20px;
-		}
-
-		.postTitle {
-			font-size: 16px;
-		}
-
-		#green_channel {
-			position: fixed;
-			bottom: 20px;
-			max-width: 64px;
-			overflow: hidden;
-			padding: 5px;
-			white-space: nowrap;
-			/*偏青绿色*/
-			background: #99cc99;
-			/* border: 1px dashed; */
-			border-radius: 8px;
-			transition: 0.3s linear;
-		}
-
-		#green_channel:hover {
-			max-width: 360px;
-		}
-
-
-		/* end */
-
-		/* .mybanner {
-			background-color: #6699cc;
-			color: #fff;
-			padding: 10px 0;
-			font-size: 0.8rem;
-			border-radius: 4px;
-			text-align: center;
-		} */
-
-		#profile_block {
-			padding: 10px;
-			font-family: "Courier New", Courier, monospace;
-			font-size: 14px;
-			width: 100%;
-		}
-
-
-		#blogTitle h1 {
-			margin-left: 4em;
-		}
-
-		#blogTitle h2 {
-			margin-left: 4em;
-		}
-
-		#blogTitle {
-			position: relative;
-		}
-
-		#blogTitle .my-avatar {
-			border-radius: 50%;
-			width: 68px;
-			height: 68px;
-			position: absolute;
-			top: calc(50% - 34px);
-			left: calc(50% - 34px);
-		}
-
-		/*hover头像时会滚动*/
-		.my-avatar:hover {
-			transform: rotate(100turn);
-			transition-delay: 1s;
-			transition-property: all;
-			transition-duration: 59s;
-			transition-timing-function: cubic-bezier(.34, 0, .84, 1);
-		}
-
-
-
-		#sidebar_search_box input[type="button"] {
-			padding-left: 10px;
-			padding-right: 10px;
-			border: 1px solid skyblue;
-			background: skyblue;
-			color: #fff;
-		}
-
-		/* h3 {
+            /* h3 {
 			font-size: 1.2rem !important;
 		}
 
@@ -192,7 +172,7 @@
 			font-size: 0.9rem;
 		} */
 
-		/* .CalTodayDay {
+            /* .CalTodayDay {
 			border: 1px solid #69c;
 			background: #69c;
 			color: #fff;
@@ -202,21 +182,19 @@
 			border-radius: 50%;
 		} */
 
-		.CalTodayDay：hover {
-			color: #fff;
+            .CalTodayDay：hover {
+                color: #fff;
+            }
 
-		}
+            .CalDayHeader:not(:first) {
+                padding: 10px 0;
+                font-size: 14px;
+            }
 
-		.CalDayHeader:not(:first) {
-			padding: 10px 0;
-			font-size: 14px;
-		}
-
-		.CalTitle {
-			font-size: 16px;
-			color: #666;
-		}
-	</style>
-</body>
-
+            .CalTitle {
+                font-size: 16px;
+                color: #666;
+            }
+        </style>
+    </body>
 </html>
