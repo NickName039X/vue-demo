@@ -1,0 +1,34 @@
+<article class="card">
+    <div class="card__thumb">
+        <img src="/src/assets/bb1.jpg" alt="" />
+    </div>
+    <div class="card__content">
+        <h2><a href="#">Title</a></h2>
+        <p>Subtitle</p>
+    </div>
+    <div class="card__tag">11</div>
+</article>
+<style>
+    .card {
+        position: relative;
+        display: grid;
+    }
+
+    .card__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .card__thumb,
+    .card__content {
+        grid-area: 1/2;
+    }
+
+    .card__tag {
+        align-self: start;
+        justify-self: start;
+        /* grid-area: 1/-1; */
+        /* Other styles */
+    }
+</style>
