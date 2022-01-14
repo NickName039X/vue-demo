@@ -37,6 +37,7 @@ body {
     overflow: hidden;
     padding: 5px;
     white-space: nowrap;
+    border: none;
     background: #aa4b6b; /* fallback for old browsers */
     background: -webkit-linear-gradient(
         to bottom,
@@ -122,6 +123,7 @@ body {
 
 .post {
     padding: 30px;
+    background: #fff;
 }
 
 #commentform_title {
