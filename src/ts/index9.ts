@@ -43,6 +43,7 @@ interface A1 {
     age: number;
 }
 
+/** this is a cool inferface */
 interface A2 {
     color: string;
     age: string;
