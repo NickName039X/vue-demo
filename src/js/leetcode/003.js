@@ -1,4 +1,4 @@
-
+/** 最长子字符串 */
 var lengthOfLongestSubstring = function(s) {
     let arr = s.split('')
     if(arr.length == 0) return 0;
