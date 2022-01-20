@@ -4,19 +4,31 @@
 
 function pluck<T, K extends keyof T>(o: T, names: K[]): T[K][] {
     return names.map(n => o[n]);
-  }
-  
-  interface Person {
-      name: string;
-      age: number;
-  }
-  let person: Person = {
-      name: 'Jarid',
-      age: 35
-  };
+}
 
-let strings: Person['name'|'age'][] = pluck(person, ['name', 'age']); // ok, string[]
+interface Person {
+    name: string;
+    age: number;
+}
+let person: Person = {
+    name: "Jarid",
+    age: 35
+};
+
+let strings: Person["name" | "age"][] = pluck(person, ["name", "age"]); // ok, string[]
 // let strings: string[] = pluck(person, ['name', 'age']); // ok, string[]
 console.log(strings);
 /**-------------------------------- */
-export default {}
+
+type DescribableFunction = {
+    description: string;
+    (someArg: number): boolean;
+};
+function doSomething(fn: DescribableFunction) {
+    console.log(fn.description + " returned " + fn(6));
+}
+
+/**-------------------------------- */
+
+
+export default {};
