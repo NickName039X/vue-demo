@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>{{ a }}</p>
-    <abc :sync="obj"></abc>
+    <abc v-bind.sync="obj"></abc>
   </div>
 </template>
 <script>
