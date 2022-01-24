@@ -4,9 +4,13 @@
 
     <!-- obj会解构 -->
     <abc v-bind.sync="obj"></abc>
+    <!-- <abc v-bind="obj"></abc> -->
+    <!-- <abc :person.sync="obj"></abc> -->
+
+
 
     <!-- p不会解构 -->
-    <abc v-bind:person.sync="p"></abc>
+    <!-- <abc v-bind:person.sync="p"></abc> -->
   </div>
 </template>
 <script>
