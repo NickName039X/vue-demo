@@ -1,7 +1,12 @@
 <template>
   <div>
     <p>{{ a }}</p>
+
+    <!-- obj会解构 -->
     <abc v-bind.sync="obj"></abc>
+
+    <!-- p不会解构 -->
+    <abc v-bind:person.sync="p"></abc>
   </div>
 </template>
 <script>
@@ -26,6 +31,11 @@ export default {
         title: "人民出版社",
         names: "张三",
       },
+      p:{
+        name:'方韬',
+        age: '18',
+        aihao: 'game'
+      }
     };
   },
   created() {
