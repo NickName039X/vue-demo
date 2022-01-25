@@ -10,7 +10,7 @@
 
 
     <!-- p不会解构 -->
-    <!-- <abc v-bind:person.sync="p"></abc> -->
+    <abc v-bind:person.sync="p"></abc>
   </div>
 </template>
 <script>
