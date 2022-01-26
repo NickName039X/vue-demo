@@ -14,3 +14,16 @@ Function.prototype.myBind = function(context) {
         return _this.apply(context, args.concat(...arguments));
     };
 };
+//////////////////////////////////////////////////////////////
+function f(){
+    return this.a;
+  }
+  
+  var g = f.bind({a:"azerty"});
+  console.log(g()); // azerty
+  
+  var h = g.bind({a:'yoo'}); // bind只生效一次！
+  console.log(h()); // azerty
+  
+  var o = {a:37, f:f, g:g, h:h};
+  console.log(o.a, o.f(), o.g(), o.h()); // 37, 37, azerty, azerty

@@ -1,33 +1,32 @@
-const array1 = ['a', 'b', 'c'];
+const a = 10 //a需要挂载到全局对象window/global下，才能被this访问。
+// window.a = a;
 
-array1.forEach(
-    element => {
-        console.log(this);//this指向window
-        console.log(element);
+const obj = {
+    a: 13,
+    b: () => console.log('--', this.a),
+    c: function() {
+        console.log(this.a)
+
+        this.b()
     }
-);
+}
 
-const arr = ['h', 'e', 'l','l','o'];
-arr.forEach(function(element){
-    arr.shift()
-    console.log(element)
-});
-// expected output: "a"
-// expected output: "b"
-// expected output: "c"
+obj.b()
+obj.c()
 
-function copy(obj) {
-    const copy = Object.create(Object.getPrototypeOf(obj));
-    const propNames = Object.getOwnPropertyNames(obj);
-  
-    propNames.forEach(function(name) {
-      const desc = Object.getOwnPropertyDescriptor(obj, name);
-      console.log('desc',desc)
-      Object.defineProperty(copy, name, desc);
-    });
-  
-    return copy;
+/**----------------------------------- */
+// this和对象的转换
+function add(c, d) {
+    return this.a + this.b + c + d;
   }
   
-  const obj1 = { a: 1, b: 2 };
-  const obj2 = copy(obj1); // 现在 obj2 看起来和 obj1 一模一样了
+  var o = {a: 1, b: 3};
+  
+  // 第一个参数是用作“this”的对象
+  // 其余参数用作函数的参数
+  add.call(o, 5, 7); // 16
+  
+  // 第一个参数是用作“this”的对象
+  // 第二个参数是一个数组，数组中的两个成员用作函数参数
+  add.apply(o, [10, 20]); // 34
+/**----------------------------------- */

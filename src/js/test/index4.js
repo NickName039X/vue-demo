@@ -1,31 +1,19 @@
-var a = {
+var b = 10;
+console.log(b);
+(function b(){
+    // 'use strict'
+    b = 20 //非匿名自执行函数无法被覆盖
+    console.log(this.b) 
+    console.log(b.prototype)
+    console.log(b.__proto__)
+})()
 
-    name: "bytedance",
-
-    func: function () {
-
-        console.log(this.name);
-
-    },
-
-};
-
-a.func();
-
-var fun1 = a.func;
-
-fun1();
-
-a.func.call({ name: "toutiao" });
-
-let a = {
-    foo: 1,
-    bar: function(){console.log(this.foo)}
-}
-
-a.bar()  //undefined
-
-(function foo() {
-    foo = 10  // 由于foo在函数中只为可读，因此赋值无效
-    console.log(foo)
-}()) 
+var bc = 10;
+(function b(){
+    console.log(bc)
+    bc = 5
+    console.log(window.bc)
+    // var bc = 20
+    console.log(bc)
+})()
+console.log(bc)

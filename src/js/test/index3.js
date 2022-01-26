@@ -1,55 +1,31 @@
+var a = {
 
-function defineReactive(obj){
-    Object.defineProperty(obj, 'a', {
-        configurable: true,
-        enumerable: true,
-        get: () => {
-            console.log('get value by defineProperty')
-            return val
-        },
-        set: (newVal) => {
-            console.log('set中this指向：',this);
-            console.log('set value by defineProperty')
-            val = newVal
-        }
-    })
-}
-let obj = {};
-let o = {
-    test:function test(){
-        defineReactive(obj);
-    }
-}
-o.test(obj)
-obj.a = [] // set value by defineProperty
-obj.a.push('1') // get value by defineProperty
-// obj.a[0] = 1 // get value by defineProperty
-// obj.a.pop(1) // get value by defineProperty
-obj.a = [1, 2, 3] // set value by defineProperty
-obj.a.splice(2, 1); //get value by defineProperty
+    name: "bytedance",
 
+    func: function () {
 
-let arr = []
-let arrProxy = new Proxy(arr, {
-    get: (target, prop) => {
-        console.log('get value by proxy')
-        return prop in target ? target[prop] : undefined
+        console.log(this.name);
+
     },
-    set: (target, prop, value) => {
-        console.log('set value by proxy')
-        target[prop] = value
-        return true
-    }
-})
 
-arrProxy.push(1)
-// get value by proxy  // 获取数组arr的push方法
-// get value by proxy  // 获取数组arr的length属性
-// set value by proxy  // 设置arr[0] = 1
-// set value by proxy  // 设置数组arr长度为1
+};
 
-arrProxy[0] = 1
-// set value by proxy
+a.func();
 
-arrProxy[0] = 2
-// set value by proxy
+var fun1 = a.func;
+
+fun1();
+
+a.func.call({ name: "toutiao" });
+
+let a = {
+    foo: 1,
+    bar: function(){console.log(this.foo)}
+}
+
+a.bar()  //undefined
+
+(function foo() {
+    foo = 10  // 由于foo在函数中只为可读，因此赋值无效
+    console.log(foo)
+}()) 
