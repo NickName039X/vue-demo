@@ -18,3 +18,5 @@ console.log(a,b,c);
 // 如果 onFulfilled 不是函数且 promise1 成功执行， promise2 必须成功执行并返回相同的值
 // 如果 onRejected 不是函数且 promise1 拒绝执行， promise2 必须拒绝执行并返回相同的据因
 
+// 1 2 3 4 5 8 9 6 7 18 19
+
