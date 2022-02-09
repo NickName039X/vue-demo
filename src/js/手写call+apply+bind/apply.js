@@ -15,7 +15,8 @@ Function.prototype.myApply = function(context, args) {
 
 Function.prototype.myApply1 = function(context = window, args = []) {
     context = context || window; // 参数默认值并不会排除null，所以重新赋值
-    context.fn = this; // this是调用call的函数
+    console.log('context', context);
+    context.fn = this; // 让context去调用func
     const result = context.fn(...args);
     delete context.fn;
     return result;
@@ -23,10 +24,11 @@ Function.prototype.myApply1 = function(context = window, args = []) {
 
 function func(a, b, c) {
     console.log(this.name);
-    console.log(a, b, c);
+    // console.log(a, b, c);
 }
 var a = {
     name: "dudu"
 };
 
-func.myApply1(a, [1,2,3]); //this指向对象 a
+func.myApply1(a, [1, 2, 3]); //this指向对象 a
+// console.log
