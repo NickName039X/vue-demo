@@ -1,5 +1,5 @@
-
-function defineReactive(obj){
+//////////////////////////////////////////////////
+function defineReactive(obj, key, val){
     Object.defineProperty(obj, 'a', {
         configurable: true,
         enumerable: true,
@@ -29,6 +29,8 @@ obj.a = [1, 2, 3] // set value by defineProperty
 obj.a.splice(2, 1); //get value by defineProperty
 
 
+//////////////////////////////////////////////////
+
 let arr = []
 let arrProxy = new Proxy(arr, {
     get: (target, prop) => {
@@ -53,3 +55,23 @@ arrProxy[0] = 1
 
 arrProxy[0] = 2
 // set value by proxy
+
+//////////////////////////////////////////////////
+const obj = {};
+Object.defineProperty(obj, 'a', {
+    configurable: true,
+    enumerable: true,
+    get: () => {
+        return val
+    },
+    set: (newVal) => {
+        console.log();
+    }
+})
+
+obj.a = 7;
+console.log(obj.a);
+obj.a = 10;
+console.log(obj.a);
+
+//////////////////////////////////////////////////

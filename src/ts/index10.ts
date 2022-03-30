@@ -30,5 +30,17 @@ function doSomething(fn: DescribableFunction) {
 
 /**-------------------------------- */
 
+type Quota = {
+    a: number;
+}
 
-export default {};
+interface state {
+    projectQuota: Quota
+}
+
+
+
+
+/**-------------------------------- */
+
+export default state
