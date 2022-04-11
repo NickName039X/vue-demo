@@ -42,5 +42,35 @@ interface state {
 
 
 /**-------------------------------- */
+// interface描述Array
+interface StringArray {
+    [index: number]: string;
+  }
+  
+  let myArray: StringArray;
+  myArray = ["Bob", "Fred"];
+  
+/**-------------------------------- */
+
+// interface描述函数类型
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+  }
+  let mySearch: SearchFunc;
+  mySearch = function(source: string, subString: string) {
+    let result = source.search(subString);
+    return result > -1;
+}
+  
+/**-------------------------------- */
+const obj = {
+    name: "yj",
+    getName() {
+      return this.name // 可以自动推导为{ name:string, getName():string}类型
+    },
+  }
+obj.getName() // string类型
+/**-------------------------------- */
+
 
 export default state

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div class="box">
+        <img src="../assets/bb1.jpg" alt="">
+    </div> -->
+
+    <div class="box">
+        <p class="box-p">hello test </p>
+    </div>
+
+    <img src="../assets/bb1.jpg" alt="">
+</body>
+</html>
+<style>
+    /* img{
+        width: 700px;
+        height: auto;
+    } */
+    .box{
+        width: 40%;
+        height: 0; /*设置height为0，避免盒子被撑开额外的高度*/
+        background: pink;
+        padding-bottom: 40%;
+        position: relative;
+    }
+    .box-p{
+        position: absolute;
+        width: 100%;
+        height: 90%;
+        background: yellow;
+    }
+    *{
+        margin: 0;
+        height: 0;
+    }
+</style>

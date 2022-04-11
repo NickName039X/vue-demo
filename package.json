@@ -1,51 +1,52 @@
 {
-    "name": "demo",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build --mode production",
-        "lint": "vue-cli-service lint",
-        "build:dev": "vue-cli-service build --mode dev",
-        "flow": "flow"
-    },
-    "dependencies": {
-        "axios": "^0.21.1",
-        "core-js": "^2.6.5",
-        "element-ui": "^2.10.0",
-        "less": "^2.7.3",
-        "less-loader": "^4.0.5",
-        "lodash": "^4.17.19",
-        "path": "^0.12.7",
-        "react-monaco-editor": "^0.40.0",
-        "uglifyjs-webpack-plugin": "^2.1.3",
-        "vue": "^2.6.10",
-        "vue-router": "^3.1.3",
-        "webpack": "^4.35.2",
-        "webpack-cli": "^3.3.5"
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.6.4",
-        "@babel/core": "^7.6.4",
-        "@babel/preset-flow": "^7.0.0",
-        "@vue/cli-plugin-babel": "^3.7.0",
-        "@vue/cli-service": "^3.7.0",
-        "chalk": "^2.4.2",
-        "flow": "^0.2.3",
-        "flow-bin": "^0.109.0",
-        "node-sass": "^4.14.1",
-        "sass-loader": "^8.0.2",
-        "semver": "^6.3.0",
-        "shelljs": "^0.8.3",
-        "vue-template-compiler": "^2.5.21"
-    },
-    "postcss": {
-        "plugins": {
-            "autoprefixer": {}
-        }
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions"
-    ]
+  "name": "demo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --mode production",
+    "lint": "vue-cli-service lint",
+    "build:dev": "vue-cli-service build --mode dev",
+    "flow": "flow"
+  },
+  "dependencies": {
+    "@types/three": "^0.139.0",
+    "axios": "^0.21.1",
+    "core-js": "^2.6.5",
+    "element-ui": "^2.10.0",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "lodash": "^4.17.19",
+    "path": "^0.12.7",
+    "react-monaco-editor": "^0.40.0",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-flow": "^7.0.0",
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "chalk": "^2.4.2",
+    "flow": "^0.2.3",
+    "flow-bin": "^0.109.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "semver": "^6.3.0",
+    "shelljs": "^0.8.3",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
