@@ -1,0 +1,42 @@
+<body id="body">
+    <div id="a">
+        aaaaaaaa
+        <div id="b">
+            bbbbbbb
+            <div id="c">
+                cccccccc
+                <div id="d">ddddddd</div>
+            </div>
+        </div>
+    </div>
+    <p>111</p>
+    <p>222</p>
+    <p>333</p>
+
+    <script>
+        // document.getElementById('a').addEventListener('click', function ( e ) {
+        //     console.log('target:' + e.target.id + ' a:' + e.currentTarget.id);
+        // });
+        document.getElementById('a').addEventListener('click', function (e) {
+            console.log('target', e.target.id);
+            console.log('currentTarget', e.currentTarget.id);
+        }, false)
+
+        function hide (e) {
+            e.currentTarget.style.visibility = "hidden";
+            console.log(e.currentTarget);
+            // 该函数用作事件处理器时: this === e.currentTarget
+        }
+
+        var ps = document.getElementsByTagName('p');
+
+        for (var i = 0; i < ps.length; i++) {
+            // console: 打印被点击的p元素
+            ps[i].addEventListener('click', hide, false);
+        }
+        // console: 打印body元素
+        document.body.addEventListener('click', hide, false);
+
+
+    </script>
+</body>

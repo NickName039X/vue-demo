@@ -5,6 +5,11 @@ const router = new Router({
     // mode:'history',
     routes: [
         {
+            path: "/",
+            name: "index",
+            redirect:'/index1',
+        },
+        {
             path: "/index1",
             name: "index1",
             component: () => import("@/views/index1.vue")
