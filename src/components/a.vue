@@ -1,13 +1,14 @@
-$<template>
-    <div>
-        <b :top="top" />
+<template>
+    <div class="A">
+        <B :top="top" />
+        <button @click="change">click me</button>
     </div>
 </template>
 <script>
-import b from "./b.vue";
+import B from "./b.vue";
 export default {
     name: "",
-    components: { b },
+    components: { B },
     props: [""],
     data() {
         return {
@@ -21,12 +22,21 @@ export default {
     created() {},
     beforeMount() {},
     mounted() {},
-    methods: {},
+    methods: {
+        change() {
+            this.top.name = '小米';
+            // this.top = {
+            //     ...this.top,
+            //     age: 20
+            // };
+        }
+    },
     computed: {}
 };
 </script>
-<style lang="" scoped>
-* {
-    background: blanchedalmond;
+<style lang="scss" scoped>
+.A {
+    background: pink;
+    padding: 20px;
 }
 </style>

@@ -20,6 +20,11 @@ const router = new Router({
             component: () => import("@/views/index2.vue")
         },
         {
+            path: "/index3",
+            name: "index3",
+            component: () => import("@/views/index3.vue")
+        },
+        {
             path: "/table",
             component: () => import("@c/table.vue"),
             // redirect: '/table/template1',

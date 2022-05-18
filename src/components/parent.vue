@@ -14,18 +14,15 @@
             @focus="onFocusEvent"
             @ageInput="onAgeInputEvent"
         ></child>
-        <base-input @focus.native="onBaseFocus" @input.native="onBaseInput"></base-input>
     </div>
 </template>
 <script>
 import { get } from "https";
 import child from "./child.vue";
-import baseInput from './v-model/index';
 export default {
     name: "parent", //组件名
     components: {
         child,
-        baseInput
     },
     data() {
         return {
@@ -52,9 +49,6 @@ export default {
             console.log("age输入了", e);
         },
         onBaseFocus(e){//不生效
-            console.log(e.target.value)
-        },
-        onBaseInput(e){//生效
             console.log(e.target.value)
         },
     }
