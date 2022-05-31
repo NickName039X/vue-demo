@@ -86,3 +86,4 @@ function solution (str) {
 }
 solution('我要去[一 | 二]的地方吃(三 | 四)可以吗？')
 solution('我要去(一 | 二 | 七)的地方吃[三 | 四]可以吗？')
+solution('[1|2]我要去(一 | 二 | 七)的地方吃可以吗？')
