@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="A" class="A">
+        <div class="B">
+            <div class="C"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let test = document.getElementById("A");
+    test.addEventListener('mouseout', function (event) {
+        console.log(111, event.toElement);
+        if (event.toElement === 'body') {
+            event.target.style.background = event.target.style.bgBack;
+        }
+        // 高亮 mouseleave 的目标
+        event.target.style.background = "orange";
+        event.target.style.bgBack = event.target.style.background;
+        // 延迟 500ms 后重置颜色
+
+    })
+
+</script>
+<style>
+    body {
+        margin-left: 100px;
+    }
+
+    .A {
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+
+    .B {
+        width: 150px;
+        height: 150px;
+        background: purple;
+    }
+
+    .C {
+        width: 100px;
+        height: 100px;
+        background: black;
+    }
+</style>
