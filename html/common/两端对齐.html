@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>密码<p class="zw"></p>
+        </li>
+        <li>用户名<p class="zw"></p>
+        </li>
+        <li>身份证号<p class="zw"></p>
+        </li>
+    </ul>
+</body>
+
+</html>
+<style>
+    ul {
+        list-style: none;
+    }
+
+    ul>li {
+        width: 120px;
+        text-align: justify;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    /* text-align不会处理被打断的行和最后一行。解决办法是：
+    1.text-align-last:justify
+    2.设置span的display为inline-block,width:100%
+    使内联匿名盒的宽度超过盒宽度，浏览器会将其拆成两行，自然第一行的text-align:justify效果就生效了，注：需设置行高不然会有空隙 */
+    .zw {
+        display: inline-block;
+        width: 100%;
+    }
+</style>

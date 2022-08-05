@@ -10,6 +10,7 @@ let p1 = new Promise((resolve, reject) => {
     resolve(3);//==>跳往then
     console.log(33); //33会打印
     resolve(2);//==>永远不会执行,因为promise已决议
+    console.log(44); //44会打印
     reject(1);
     reject(new Error(1)); //==>跳往catch
 
