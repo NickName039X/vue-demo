@@ -12,3 +12,7 @@ var rel=/([a-z]+)\s([a-z]+)/;
 var text="alen turing";
 var arr_2=text.replace(rel,"$2 $1");
 console.log(arr_2);  //"turing alen
+
+const r = /1(?=0\d{2})-(\d{8})/
+const test = r.exec('1020-12345678')
+console.log(test);
