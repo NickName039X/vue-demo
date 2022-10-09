@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    body{
+      position: absolute;
+      left:0;
+      right: 0;
+      top:0;
+      bottom:0;
+      
+    }
+    body::-webkit-scrollbar{
+      width:0;
+      height:0;
+    }
+    #canvas{
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+  class Matrix {
+    constructor() {
+      this._init();
+    }
+    _init(){
+      this.canvasEle = document.getElementById('canvas');
+      this.ctx = this.canvasEle.getContext('2d');
+      this.bodyEle = document.getElementsByTagName('body')[0];
+      this.canvasWidth = 150;
+      this.canvasHeight = 150;
+      this.fontSize = 20;
+      this.timer = null;
+      this.xMalPositions = [-5, 0, 5]; // x坐标偏移
+      this.maxCount = 300; // 限制词条个数，防止太多导致卡顿
+      this.wordPool = []; // 词条数组
+      this.words = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+      this.setCanvasSize();
+      window.addEventListener('resize', () => {
+        this.setCanvasSize();
+      });
+      this._initWordPool();
+      this.timer = this.setTimer(() => {
+        for(let i = 0; i < this.wordPool.length; i++) {
+          let curWord = this.wordPool[i];
+          curWord.y += curWord.speed;
+          if(curWord.y  >= this.canvasHeight) {
+            this.wordPool.splice(i, 1);
+          };
+          const needAddNewWoed = Math.random() > 0.6;
+          if(this.wordPool.length < this.maxCount && needAddNewWoed && (curWord.y + curWord.textHeight) > this.canvasHeight) {
+            console.log(this.wordPool.length, '长度');
+            const malPosition = this.xMalPositions[parseInt(Math.random() * this.xMalPositions.length)];
+            const newX = this.fontSize * i + malPosition;
+            const word = this._generateWord(i, newX);
+            this.wordPool.push(word);
+          }
+          this.drawWord(curWord);
+        }
+      });
+    }
+    // 初始化 词条池
+    _initWordPool() {
+      const poolLen = parseInt(this.canvasWidth / this.fontSize);
+      for(let i = 0; i < poolLen; i++) {
+        const oneWord = this._generateWord(i);
+        this.wordPool.push(oneWord);
+      }
+    }
+    // 生成词条
+    _generateWord(index, newX) {
+      const text = this.getRandomWord();
+      const textHeight = text.length * this.fontSize;
+      const malPosition = this.xMalPositions[parseInt(Math.random() * this.xMalPositions.length)];
+      const startY = 0 - textHeight;
+      const word = {
+        x: newX || (this.fontSize * index + malPosition),
+        y: startY,
+        recordY: startY,
+        fontSize: this.fontSize,
+        text,
+        textHeight,
+        speed: [5, 6, 7][parseInt(Math.random() * 3)], // 随机速度
+      }
+      return word;
+    }
+    // 设置计时器
+    setTimer(cb) {
+      return setInterval(() => {
+        cb()
+      }, 30);
+    }
+    // 设置canvas大小
+    setCanvasSize(){
+      const { clientWidth, clientHeight } = this.bodyEle;
+      this.canvasWidth = clientWidth;
+      this.canvasHeight = clientHeight;
+      this.canvasEle.width = clientWidth;
+      this.canvasEle.height = clientHeight;
+    }
+    // 随机生成句子
+    getRandomWord() {
+      let count = parseInt(Math.random() * 20 + 10); // [20, 30)
+      let word = '';
+      while(count >= 0) {
+        word += this.words[parseInt(Math.random() * (this.words.length + 1))];
+        count -= 1;
+      }
+      return word;
+    };
+    // 绘制词条
+    drawWord(oneWord) {
+      const len = oneWord.text.length;
+      this.ctx.clearRect(oneWord.x - 2, oneWord.recordY, oneWord.fontSize + 2, oneWord.textHeight);
+      if(oneWord.y >= this.canvasHeight) return;
+      oneWord.recordY = oneWord.y;
+      this.ctx.textBaseline = "top";
+      this.ctx.font = `${oneWord.fontSize}px Microsoft YaHei`;
+      
+      let startY = oneWord.y;
+      for(let i = 0; i < len; i ++) {
+        const opacity = i / (len - 1);
+        this.ctx.fillStyle = `rgba(49, 117, 51, ${opacity})`;
+        this.ctx.fillText(oneWord.text[i], oneWord.x, startY);
+        startY += oneWord.fontSize;
+      }
+    }
+  }
+  const matrix = new Matrix();
+
+</script>
+</body>
+</html>

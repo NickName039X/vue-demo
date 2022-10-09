@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+
+</html>
+<script>
+    var str = ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd'];
+    function generateMixed (n) {
+        var res = "";
+        for (var i = 0; i < n; i++) {
+            var id = Math.ceil(Math.random() * 10);
+            res += str[id];
+        }
+        return res;
+    }
+
+
+    function resizeCanvas () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerWidth;
+    };
+
+
+
+    /** @type {HTMLCanvasElement} */
+    var canvas = document.getElementById('canvas')
+    resizeCanvas()
+    var GAP = 100;
+    var CHANNEL = window.innerWidth / GAP;
+    const ctx = canvas.getContext('2d');
+    ctx.rotate(Math.PI*90/180);
+    ctx.translate(0, -window.innerWidth);
+    ctx.font = "30px serif";
+    ctx.fillStyle = 'green'
+    ctx.letterSpacing = "10px"
+
+
+    var xRan = [];
+    var yRan = [];
+    var initY = 0;
+    var xSpeed = [];
+    var TEXTWIDTH = 200;
+
+    function getRandomNum (m, n) {
+        m = m == 'undefined' ? 1 : m;
+        n = n == 'undefined' ? 100 : n;
+        if (m >= n) {
+            n = m + 100;
+        }
+        let w = n - m;
+        let num = Math.random() * w + m;
+        return parseInt(num);
+    }
+
+
+    console.log(xRan);
+    console.log(yRan);
+
+
+    for (let index = 0; index < CHANNEL; index++) {
+        xSpeed.push(getRandomNum(1, 10))
+        xRan.push(getRandomNum(0, canvas.height - 200));
+        yRan.push(initY)
+        initY += GAP;
+    }
+    function drawText () {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerWidth)
+        requestAnimationFrame(drawText)
+        for (let index = 0; index < CHANNEL; index++) {
+            xRan[index] = xRan[index] + xSpeed[index];
+            if (xRan[index] > window.innerHeight) xRan[index] = 0;
+            ctx.fillText(generateMixed(5), xRan[index], yRan[index], 200);
+        }
+
+    }
+
+    requestAnimationFrame(drawText)
+
+
+
+</script>
+<style>
+    #canvas {
+        background: black;
+        /* opacity: 0.5; */
+    }
+</style>
