@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="button">流光</div>
+</body>
+
+</html>
+<style>
+    .button {
+        width: 300px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 8px;
+        color: aliceblue;
+        background-image: linear-gradient(to left, #EAD6EE, #A0F1EA, rgb(124, 241, 241), #e3a5f0, #EAD6EE);
+        background-size: 400%;
+
+    }
+
+    @keyframes run {
+        100% {
+            background-position: 400% 0px;
+        }
+        25% {
+            background-position: 100% 0px;
+        }
+    }
+
+    .button:hover {
+        /* background-position: 400% 0px;
+        transition: all 4s linear; */
+        animation: run 4s linear 0s infinite;
+    }
+</style>
