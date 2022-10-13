@@ -20,7 +20,7 @@
 // }
 
 // resolve 的值是 undefined
-Promise.resolve(2).then(() => {}, () => {})
+Promise.resolve(2).then((a) => {}, () => {})
 
 // resolve 的值是 2
 Promise.resolve(2).finally(() => {})
