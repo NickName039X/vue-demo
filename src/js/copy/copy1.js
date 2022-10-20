@@ -7,6 +7,8 @@ var activity = {
     }
 };
 
+//git rebase
+
 
 var str = JSON.parse(JSON.stringify(activity));
 console.log(str);
