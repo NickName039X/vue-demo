@@ -4,6 +4,7 @@
   </div>
 </template>
 
+// 测试git pull (rebase)
 <script>
 export default {
   name: "app",
