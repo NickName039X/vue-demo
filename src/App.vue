@@ -6,7 +6,8 @@
 
 // 测试git pull (rebase)
 
-//哈哈哈哈
+// 嘻嘻嘻
+
 <script>
 export default {
   name: "app",
