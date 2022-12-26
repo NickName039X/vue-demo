@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 方案1 -->
+    <div class="box0">
+        <div class="box"></div>
+        <div class="box2"></div>
+    </div>
+
+    <!-- 方案2 -->
+    <div id="heart"></div>
+</body>
+
+</html>
+
+<style>
+    /*
+    border-radius 其实是个复合属性，他有8个方向的值，分别是上左 上右 下右 下左/左上 右上 右下 左下
+    */
+    .box0 {
+        position: relative;
+        margin-left: 100px;
+        margin-top: 100px;
+    }
+
+    .box {
+        width: 164px;
+        height: 164px;
+        position: absolute;
+        z-index: 1;
+        background: linear-gradient(to bottom, #FBBCD0, #FBAAC3);
+        /* box-shadow: 0 10px 10px #B9174C; */
+        border-radius: 44px 120px/44px 120px;
+    }
+
+    .box2 {
+        position: absolute;
+        left: 64px;
+        width: 164px;
+        height: 164px;
+        background: linear-gradient(to bottom, #FBBCD0, #FBAAC3);
+        /* box-shadow: 0 10px 10px #B9174C; */
+        border-radius: 120px 44px/120px 44px;
+    }
+
+    #heart {
+        position: relative;
+        width: 100px;
+        height: 90px;
+    }
+
+    #heart:before,
+    #heart:after {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: red;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    #heart:after {
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+    }
+</style>

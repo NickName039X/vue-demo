@@ -68,3 +68,34 @@ var num1 = 987654321;
 for (const iterator of num1) {
     console.log(iterator);
 }
+
+
+function showargs () {
+    console.log(arguments);
+    console.log(arguments[Symbol.iterator]);
+    // console.log(arguments.callee);
+}
+
+showargs(1, 2, 3, 4)
+
+
+
+/**
+ * 
+ * @returns 利用arguments实现不定参数函数
+ */
+function add () {
+    console.log(arguments);
+    var result = 0;
+    for (let index = 0; index < arguments.length; index++) {
+        const element = arguments[index];
+        result += element;
+    }
+    return result;
+}
+
+const sum = add(1, 2, 3, 4, 5);
+const sum1 = add(10, 20, 30, 40, 50);
+
+console.log('sum',sum);
+console.log('sum1',sum1);
