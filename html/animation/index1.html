@@ -3,7 +3,7 @@
         width: 120px;
         height: 180px;
         background: purple;
-        animation: move 4s infinite ease-in-out;
+        animation: move 1s infinite linear both alternate;
         position: absolute;
     }
 
@@ -16,15 +16,12 @@
     @keyframes move {
         0% {
             z-index: 1;
-        }
-
-        12.5% {
             transform: translate(150px)
         }
 
-        25% {
-            z-index: -1;
-            transform: translate(0px)
+
+        50% {
+            transform: translate(70px)
         }
 
         100% {
