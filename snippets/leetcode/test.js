@@ -1,4 +1,10 @@
-var lengthOfLongestSubstring = function(s) {
+
+/**
+ * 
+ * @param {*} 最长子字符串
+ * @returns 
+ */
+var lengthOfLongestSubstring = function (s) {
     // 哈希集合，记录每个字符是否出现过
     const occ = new Set();
     const n = s.length;
