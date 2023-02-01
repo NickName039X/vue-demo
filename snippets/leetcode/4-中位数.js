@@ -1,7 +1,8 @@
-
-// [2, 1, 4, 5, 7, 9, -12, 7]
-
-// 递归法
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
 function sortArray (arr) {
     if (arr.length === 0) return arr;
     let mid = Math.floor(Math.random() * (arr.length - 1))//随机索引
@@ -35,10 +36,11 @@ function sortArray (arr) {
     ]
 }
 
-// let result = sortArray([2, 1, 4, 5, 7, 9, -12, 7])
-
-
-// [2, 1, 4, 5, 7, 9, -12, 7]
-//快慢指针法
- var sortArray1 = function(nums) {
+var findMedianSortedArrays = function (nums1, nums2) {
+    const result = sortArray([...nums1, ...nums2])
+    const len = result.length - 1;//数组最大下标
+    return len % 2 ? (result[Math.floor(len / 2)] + result[Math.ceil(len / 2)]) / 2 : result[len / 2];
 };
+
+// const result = findMedianSortedArrays([1, 3], [2])
+// console.log(result);
