@@ -3,6 +3,7 @@
  * @return {string}
  */
 // babad
+// 状态还没ac
 var longestPalindrome = function (s) {
     let fast = 1;
     let low = 0;
