@@ -39,7 +39,7 @@ mySet.add(2);
 var num = '123';
 
 for (const iterator of myMap) {
-    console.log(iterator);
+    console.log('myMap',iterator);
 }
 
 for (const iterator of mySet) {
