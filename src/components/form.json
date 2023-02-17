@@ -1,0 +1,12 @@
+{
+    "layout": {
+      "type": "div",
+      "children": [
+        {
+          "type": "el-input",
+          "bind": "amount"
+        }
+
+      ]
+    }
+  }

@@ -9,19 +9,24 @@
 </head>
 
 <body>
-    <div class="left">左边区域</div>
-    <div class="bfc">右边区域</div>
+    <div class="c">
+        <div class="left">左边区域</div>
+        <div class="bfc">右边区域</div>
+    </div>
 </body>
 
 </html>
 <style>
+    .c{
+        display: inline-block;
+    }
     .left {
         max-width: 400px;
         background-color: aqua;
         float: left;
     }
-    .bfc{
-        display: inline-block;
+
+    .bfc {
         background-color: burlywood;
     }
 </style>

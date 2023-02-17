@@ -6,7 +6,6 @@
 <script>
 import A from "../components/A.vue";
 export default {
-    name: "index3",
     components: { A },
     props: [""],
     data() {

@@ -25,9 +25,18 @@ const router = new Router({
             component: () => import("@/views/index3.vue")
         },
         {
+            path: "/formast",
+            name: "formast",
+            component: () => import("@/views/testformast.vue")
+        },
+        {
+            path: "/family",
+            name: "family",
+            component: () => import("@/views/testfamily.vue")
+        },
+        {
             path: "/table",
-            component: () => import("@c/table.vue"),
-            // redirect: '/table/template1',
+            component: () => import("@c/Table.vue"),
             children: [
                 {
                     path: "template1",

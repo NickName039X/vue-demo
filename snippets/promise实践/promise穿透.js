@@ -2,12 +2,20 @@ Promise.resolve(1)
   .then(2)
   .then(Promise.resolve(3))
   .then(console.log)
-//1 传非函数值会发生穿透
+
+/**
+ * 传promise 原封不动返回这个promise;
+ * 传thenable对象，执行then方法；
+ * 传非thenable对象，返回一个新的resolved的promise对象；
+ * 不带任何参数，返回一个resolved的promise对象
+ * 
+ */
+
 
 let a = Promise.resolve(1);
 let b = a.then(2);
 let c = b.then(Promise.resolve(3))
-console.log(a,b,c);
+console.log(a, b, c);
 
 /* 用promise规范解决promise穿透现象 */
 //then 方法必须返回一个 promise1 对象 注3
