@@ -92,3 +92,13 @@ var a = new promise((resolve, reject) => {
 //     console.log(res);
 // })
 // console.log(b);
+promise.defer = promise.deferred = function () {
+	let dfd = {};
+	dfd.promise = new promise((resolve, reject) => {
+		dfd.resolve = resolve;
+		dfd.reject = reject;
+	});
+	return dfd;
+};
+
+module.exports = promise;
