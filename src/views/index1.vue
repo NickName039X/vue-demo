@@ -17,7 +17,7 @@
                     @click="handleClick(scope.row)"
                     type="text"
                     size="small"
-                    >查看</el-button
+                    >查看1</el-button
                 >
                 <el-button type="text" size="small">编辑</el-button>
             </template>
