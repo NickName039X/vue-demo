@@ -1,15 +1,17 @@
 <template>
-    <div>
-        <A />
-    </div>
+  <div>
+    
+  </div>
 </template>
 <script>
-import A from "../components/A.vue";
-export default {
-    components: { A },
-    props: [""],
-    data() {
-        return {};
+  export default {
+    name:'',
+    components: {},
+    props:[''],
+    data () {
+      return {
+
+      };
     },
     watch: {},
     created() {},
@@ -17,6 +19,8 @@ export default {
     mounted() {},
     methods: {},
     computed: {}
-};
+  }
 </script>
-<style lang="" scoped></style>
+<style lang='' scoped>
+
+</style>

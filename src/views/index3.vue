@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import A from "../components/A.vue";
+import A from "../components/a.vue";
 export default {
     name: "index3",
     components: { A },

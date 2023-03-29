@@ -29,19 +29,20 @@ const router = new Router({
             name: "schema",
             component: () => import("@/views/schema.vue")
         },
-        {
-            path: "/formast",
-            name: "formast",
-            component: () => import("@/views/testformast.vue")
-        },
-        {
-            path: "/family",
-            name: "family",
-            component: () => import("@/views/testfamily.vue")
-        },
+        // {
+        //     path: "/formast",
+        //     name: "formast",
+        //     component: () => import("@/views/testformast.vue")
+        // },
+        // {
+        //     path: "/family",
+        //     name: "family",
+        //     component: () => import("@/views/testfamily.vue")
+        // },
         {
             path: "/table",
             component: () => import("@c/Table.vue"),
+            // redirect: '/table/template1',
             children: [
                 {
                     path: "template1",
