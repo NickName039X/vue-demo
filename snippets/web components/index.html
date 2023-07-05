@@ -1,0 +1,49 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* 外部样式不会影响组件内部 */
+      button {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="my-button-template">
+      <style>
+        /* 组件内部样式和结构 */
+        button {
+          background-color: blue;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+        }
+      </style>
+      <button>Click me!</button>
+    </template>
+
+    <my-button></my-button>
+
+    <script>
+      // JavaScript代码
+      class MyButton extends HTMLElement {
+        constructor() {
+          super();
+          const template = document.getElementById("my-button-template").content;
+          const shadowRoot = this.attachShadow({ mode: "open" });
+          shadowRoot.appendChild(template.cloneNode(true));
+
+          // 添加按钮的点击事件
+          const button = shadowRoot.querySelector("button");
+          button.addEventListener("click", () => {
+            console.log("Button clicked!");
+          });
+        }
+      }
+
+      window.customElements.define("my-button", MyButton);
+    </script>
+  </body>
+</html>

@@ -7,7 +7,8 @@
     "build": "vue-cli-service build --mode production",
     "lint": "vue-cli-service lint",
     "build:dev": "vue-cli-service build --mode dev",
-    "flow": "flow"
+    "flow": "flow",
+    "wc":"vue-cli-service build --target wc --name my-table src/components/element/button.vue"
   },
   "dependencies": {
     "@types/three": "^0.139.0",

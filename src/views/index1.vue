@@ -10,7 +10,8 @@
         </el-table-column>
         <el-table-column prop="address" label="地1111址" width="300">
         </el-table-column>
-        <el-table-column prop="zip" label="邮编1111  " width="120"> </el-table-column>
+        <el-table-column prop="zip" label="邮编1111  " width="120">
+        </el-table-column>
         <el-table-column fixed="right" label="操1作" width="100">
             <template slot-scope="scope">
                 <el-button
@@ -30,7 +31,7 @@ export default {
     methods: {
         handleClick(row) {
             console.log(row);
-        }
+        },
     },
 
     data() {
@@ -43,7 +44,7 @@ export default {
                     province: "上海",
                     city: "普陀区",
                     address: "上海市普陀区金沙江路 1518 弄",
-                    zip: 200333
+                    zip: 200333,
                 },
                 {
                     date: "2016-05-04",
@@ -51,18 +52,24 @@ export default {
                     province: "上海",
                     city: "普陀区",
                     address: "上海市普陀区金沙江路 1517 弄",
-                    zip: 200333
-                }
-            ]
+                    zip: 200333,
+                },
+            ],
         };
     },
 
+    beforeCreate() {
+    },
+
+    created() {},
+
     mounted() {
         this.hasUpdate = true;
+        debugger;
     },
 
     updated() {
         console.log("updated钩子触发了");
-    }
+    },
 };
 </script>
