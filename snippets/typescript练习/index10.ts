@@ -38,6 +38,9 @@ interface state {
     projectQuota: Quota
 }
 
+/**InstanceType */
+const num = 20
+// type a = InstanceType<typeof num>
 
 
 
