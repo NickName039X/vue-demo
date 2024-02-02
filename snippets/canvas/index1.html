@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <canvas id="myCanvas" width="600" height="300" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <script>
+
+        class chart {
+            //初始化构造器
+            constructor(params) {
+                this.maxWidth = params.maxWidth
+                this.maxHeight = params.maxHeight
+                //创建画布（maxWidth，maxHeight 画布的长宽最大值）
+                this.El = params.el
+                this.ctx = this.El.getContext('2d')
+                this.El.width = params.maxWidth
+                this.El.height = params.maxHeight
+
+                //绘制图片的长宽(canvas如果和图片同宽高，可取一个)
+                this.width = params.width
+                this.height = params.height
+
+                // -------缩放需要的变量------
+                this.maxScale = 10 // 最大缩放值
+                this.minScale = 0.2 // 最小缩放值
+                this.step = 0.07 // 缩放率
+                this.offsetX = 0 // 画布X轴偏移值
+                this.offsetY = 0 // 画布Y轴偏移值
+
+                this.addScaleFunc()
+            }
+
+            // 判断时机注册移除MouseWhell事件
+            addScaleFunc () {
+                this.El.addEventListener('mouseenter', this.addMouseWhell)
+                this.El.addEventListener('mouseleave', this.removeMouseWhell)
+                this.El.addEventListener('mouseenter', this.move)
+                this.El.addEventListener('mouseleave', this.removeMove)
+            };
+
+            // MouseWhell事件
+            addMouseWhell = () => {
+                document.addEventListener('mousewheel', this.scrollFunc, {
+                    passive: false
+                })
+            };
+
+            // 移除MouseWhell事件
+            removeMouseWhell = () => {
+                document.removeEventListener('mousewheel', this.scrollFunc, {
+                    passive: false
+                })
+            };
+
+            // 添加mousemove显示名字
+            move = () => {
+                this.El.addEventListener('mousemove', this.handleMousemove)
+            };
+
+            removeMove = () => {
+                this.El.removeEventListener('mousemove', this.handleMousemove)
+            };
+
+            // 绘制矩形
+            drawRect (canvasSystem) {
+                const { points } = canvasSystem
+                this.ctx.beginPath()
+                this.ctx.moveTo(points[0][0], points[0][1])
+                for (let i = 1; i <= points.length - 1; i++) {
+                    this.ctx.lineTo(points[i][0], points[i][1])
+                }
+                this.ctx.closePath()
+                this.ctx.strokeStyle = canvasSystem.color || 'red'
+                this.ctx.fillStyle = hexToRgba(canvasSystem.color, 0.3)
+                this.ctx.fill()
+                this.ctx.stroke()
+            }
+
+            // 绘制多边形
+            drawPolygon (canvasSystem) {
+                const { points } = canvasSystem
+                this.ctx.beginPath()
+                this.ctx.moveTo(points[0][0], points[0][1])
+                for (let i = 1; i <= points.length - 1; i++) {
+                    this.ctx.lineTo(points[i][0], points[i][1])
+                }
+                this.ctx.closePath()
+                this.ctx.strokeStyle = canvasSystem.color || 'red'
+                this.ctx.fillStyle = hexToRgba(canvasSystem.color, 0.3)
+                this.ctx.stroke()
+                this.ctx.fill()
+            }
+
+            // 渲染整个图形画布
+            render () {
+                this.ctx.clearRect(0, 0, this.maxWidth, this.maxHeight)
+                this.El.width = this.maxWidth
+
+                const scaledWidth = this.width * this.scale
+                const scaledHeight = this.height * this.scale
+                //重绘图像
+                this.ctx.drawImage(
+                    this.image,
+                    this.offsetX,  // x轴偏移
+                    this.offsetY,  // y轴偏移
+                    scaledWidth,
+                    scaledHeight
+                )
+
+                //重绘图形
+                this.data.forEach((item) => {
+                    this.draw(item)
+                })
+            };
+
+            scrollFunc = (e) => {
+                e.preventDefault()
+                if (e.wheelDelta) {
+                    const x = e.offsetX - this.offsetX
+                    const y = e.offsetY - this.offsetY
+                    const offsetX = (x / this.scale) * this.step
+                    const offsetY = (y / this.scale) * this.step
+
+                    if (e.wheelDelta > 0) {
+                        this.offsetX -= this.scale >= this.maxScale ? 0 : offsetX
+                        this.offsetY -= this.scale >= this.maxScale ? 0 : offsetY
+                        this.scale += this.step
+                    } else {
+                        this.offsetX += this.scale <= this.minScale ? 0 : offsetX
+                        this.offsetY += this.scale <= this.minScale ? 0 : offsetY
+                        this.scale -= this.step
+                    }
+                    this.scale = Math.min(this.maxScale, Math.max(this.scale, this.minScale))
+                    this.render()
+                }
+            };
+
+
+            draw (item) {
+                this.ctx.setTransform(
+                    this.scale,
+                    0,
+                    0,
+                    this.scale,
+                    this.offsetX,
+                    this.offsetY
+                )
+                switch (item.type) {
+                    case 'rectangle':
+                        this.drawRect(item)
+                        break
+                    case 'polygon':
+                        this.drawPolygon(item)
+                        break
+                }
+            };
+
+            // 添加形状
+            push (data) {
+                this.data.push(data)
+                this.draw(data);
+            };
+
+            // 坐标等比例转换
+            getTransForm (item = {}, originSizeWidth, originSizeHeight, imgSizeWidth, imgSizeHeight) {
+
+                if (item.type === 'polygon') {
+                    let polygon = []
+                    for (let i = 0; i < item.length - 1; i = i + 2) {
+                        // 图片本身宽高 / 绘制出来的宽高  等于坐标的比例转换
+                        const cur = [item[i] / originSizeWidth * imgSizeWidth, item[i + 1] / originSizeHeight * imgSizeHeight]
+                        polygon.push(cur)
+                    }
+                    return polygon
+                }
+                if (item.type === 'rectangle') {
+                    const x1 = [item[0] / originSizeWidth * imgSizeWidth, item[1] / originSizeHeight * imgSizeHeight]
+                    const x2 = [item[2] / originSizeWidth * imgSizeWidth, item[1] / originSizeHeight * imgSizeHeight]
+                    const x3 = [item[2] / originSizeWidth * imgSizeWidth, item[3] / originSizeHeight * imgSizeHeight]
+                    const x4 = [item[0] / originSizeWidth * imgSizeWidth, item[3] / originSizeHeight * imgSizeHeight]
+
+                    return [x1, x2, x3, x4]
+                }
+            };
+
+
+            // 绘制图像
+            drawImage (data) {
+                console.log('aaa', this);
+
+                this.image = new Image()
+                this.image.src = data.url
+                // 图像在Canvas中的位置 居中
+                this.offsetX = (this.maxWidth - this.width) / 2
+                this.offsetY = (this.maxHeight - this.height) / 2
+
+                // 绘制图像
+                this.ctx.drawImage(this.image, this.offsetX, this.offsetY, this.width, this.height)
+                // _________________ 绘制图形 ________________
+                data.shape.forEach(i => {
+                    //坐标缩放转换
+                    const _data = getTransForm(i, data.width, data.height, this.width, this.height)
+                    this.push({ ...i, width: data.width, height: data.height, points: _data })
+                })
+            }
+
+            // 重置画布
+            clearCanvas () {
+                this.ctx.clearRect(0, 0, this.maxWidth, this.maxHeight)
+            }
+
+            // 获取鼠标位置
+            handleMousemove = (event) => {
+                const mouseX = event.clientX - this.El.getBoundingClientRect().left
+                const mouseY = event.clientY - this.El.getBoundingClientRect().top
+
+                this.clearCanvas()
+
+                const scaledWidth = this.width * this.scale
+                const scaledHeight = this.height * this.scale
+                this.El.width = this.maxWidth
+
+                this.ctx.drawImage(
+                    this.image,
+                    this.offsetX,
+                    this.offsetY,
+                    scaledWidth,
+                    scaledHeight
+                )
+
+                for (const polygon of this.data) {
+                    this.draw(polygon)
+
+                    if (this.ctx.isPointInPath(mouseX, mouseY)) {
+                        if (!polygon.name) return
+
+                        const text = polygon.name
+                        const padding = 10
+                        const maxWidth = 100
+                        const lineHeight = 20
+                        const borderRadius = 4
+                        const backgroundColor = '#fff'
+                        const font = '14px Arial'
+
+                        this.drawRoundedRect(text, mouseX + 10, mouseY, maxWidth, lineHeight, borderRadius, backgroundColor, padding)
+                        this.drawTextWithLineBreak(mouseX + 10, mouseY + 12 / 2, lineHeight, font, padding)
+                    }
+                }
+            }
+
+            // 绘制圆角矩形背景图
+            drawRoundedRect = (text, x, y, maxWidth, lineHeight, radius, color, padding) => {
+                this.ctx.font = '14px Arial'
+                const words = text.split('\n')
+                let line = ''
+                let testWidth = 0
+                let offsetY = y + 12 / 2
+                this.lines = []
+
+                for (let i = 0; i < words.length; i++) {
+                    const testLine = line + words[i] + ''
+                    const metrics = this.ctx.measureText(testLine)
+                    testWidth = metrics.width
+
+                    if (testWidth > maxWidth && i > 0) {
+                        this.ctx.fillText(line, x, offsetY)
+                        line = words[i] + ''
+                        offsetY += lineHeight
+                    } else {
+                        line = testLine
+                    }
+
+                    this.lines.push(line)
+                }
+
+                const scaleX = (x - this.offsetX) / this.scale
+                const scaleY = (y - this.offsetY) / this.scale
+
+                const textHeight = this.lines.length === 1
+                    ? this.lines.length * padding : this.lines.length * (lineHeight - 2)
+                const rectHeight = textHeight + 2 * padding
+                const width = testWidth > maxWidth ? maxWidth : testWidth
+                const rectWidth = width + 2 * padding
+
+                this.ctx.fillStyle = color
+                this.ctx.beginPath()
+                this.ctx.moveTo(scaleX + radius, scaleY)
+                this.ctx.arcTo(scaleX + rectWidth, scaleY, scaleX + rectWidth, scaleY + rectHeight, radius)
+                this.ctx.arcTo(scaleX + rectWidth, scaleY + rectHeight, scaleX, scaleY + rectHeight, radius)
+                this.ctx.arcTo(scaleX, scaleY + rectHeight, scaleX, scaleY, radius)
+                this.ctx.arcTo(scaleX, scaleY, scaleX + rectWidth, scaleY, radius)
+                this.ctx.closePath()
+                this.ctx.fill()
+            }
+
+            // 绘制文字
+            drawTextWithLineBreak = (x, y, lineHeight, font, padding) => {
+                this.ctx.font = font
+                this.ctx.fillStyle = 'black'
+                this.ctx.textBaseline = 'middle'
+
+                for (let i = 0; i < this.lines.length; i++) {
+                    this.ctx.fillText(
+                        this.lines[i],
+                        (x - this.offsetX) / this.scale + padding,
+                        ((y - this.offsetY) / this.scale + i * lineHeight + padding)
+                    )
+                }
+            }
+
+
+        }
+
+        // 构建图表对象
+        const chartObj = new chart({
+            el: document.getElementById('myCanvas'),
+            width: 300,
+            height: 300,
+            maxWidth: 1000,
+            maxHeight: 1000
+        });
+
+        console.log('this',this);
+
+
+
+
+
+        chartObj.drawImage({
+            url: './background.jpg',
+            type: '',
+            width: 1240, //图片本身宽高
+            height: 1340, //图片本身宽高
+            //一个图片可能绘制多个图形
+            shape: [
+                {
+                    type: 'polygon',
+                    points: [632, 1922, 128, 1924, 14, 1961, 610, 1982, 1972, 632]
+                }
+
+            ],
+            name: '我是图片'  //后面显示hover名字
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

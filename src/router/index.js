@@ -15,6 +15,11 @@ const router = new Router({
             component: () => import("@/views/index1.vue")
         },
         {
+            path: "/table-tree",
+            name: "index1",
+            component: () => import("@/views/table-tree.vue")
+        },
+        {
             path: "/index2",
             name: "index2",
             component: () => import("@/views/index2.vue")
