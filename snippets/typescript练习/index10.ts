@@ -49,10 +49,10 @@ const num = 20
 interface StringArray {
     [index: number]: string;
   }
-  
+
   let myArray: StringArray;
   myArray = ["Bob", "Fred"];
-  
+
 /**-------------------------------- */
 
 // interface描述函数类型
@@ -64,7 +64,7 @@ interface SearchFunc {
     let result = source.search(subString);
     return result > -1;
 }
-  
+
 /**-------------------------------- */
 const obj = {
     name: "yj",
@@ -77,3 +77,4 @@ obj.getName() // string类型
 
 
 export default state
+
