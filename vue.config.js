@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/pro' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
     outputDir: 'dist',
     assetsDir: 'static',
     filenameHashing: true,
@@ -44,12 +44,14 @@ module.exports = {
     // 生产环境 sourceMap
     productionSourceMap: false,
 
+
+
     // cors 相关 https://jakearchibald.com/2017/es-modules-in-browsers/#always-cors
     // corsUseCredentials: false,
     // webpack 配置，键值对象时会合并配置，为方法时会改写配置
     // https://cli.vuejs.org/guide/webpack.html#simple-configuration
-    configureWebpack: (config) =>
-    {
+    configureWebpack: (config) => ({
+        devtool: 'source-map',
         resolve: {
             extensions: [
                 '.mjs',
@@ -62,13 +64,12 @@ module.exports = {
 
 
         }
-    },
+    }),
 
     // webpack 链接 API，用于生成和修改 webapck 配置
     // https://github.com/mozilla-neutrino/webpack-chain
 
-    chainWebpack: (config) =>
-    {
+    chainWebpack: (config) => {
 
         // 因为是多页面，所以取消 chunks，每个页面只对应一个单独的 JS / CSS
         config.optimization.splitChunks({
@@ -103,7 +104,7 @@ module.exports = {
         // css预设器配置项
         loaderOptions: {
             sass: {
-                prependData: `@import "@/styles/entry.scss";`  // 
+                prependData: `@import "@/styles/entry.scss";`  //
             },
             css: {
 
@@ -123,12 +124,11 @@ module.exports = {
         // port: 3000,
         https: false,
 
-        hotOnly: false,
+        // hotOnly: false,
 
         proxy: null,
 
-        before: app =>
-        {
+        before: app => {
         },
         // sockHost: 'localhost',
         // disableHostCheck: true,

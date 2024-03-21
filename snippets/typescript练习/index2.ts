@@ -162,7 +162,7 @@ let test: TypeCond<never, number>;
 type Foo1 = never extends never ? true : false // gives true
 //but
 type Bar<T> = T extends never ? true : false
-type Baz = Bar<never> // not `true` as expected but `never`!
+type Baz = Bar<never> // not `true` as expected but `never`!这是因为ts中的条件类型会分发到联合类型上面
 
 /**-------------------------------- */
 type Alias = { num: number }

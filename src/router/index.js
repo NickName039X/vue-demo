@@ -15,6 +15,11 @@ const router = new Router({
             component: () => import("@/views/index1.vue")
         },
         {
+            path: "/table-tree",
+            name: "index1",
+            component: () => import("@/views/table-tree.vue")
+        },
+        {
             path: "/index2",
             name: "index2",
             component: () => import("@/views/index2.vue")
@@ -25,8 +30,28 @@ const router = new Router({
             component: () => import("@/views/index3.vue")
         },
         {
+            path: "/index4",
+            name: "index4",
+            component: () => import("@/views/index4.vue")
+        },
+        {
+            path: "/schema",
+            name: "schema",
+            component: () => import("@/views/schema.vue")
+        },
+        // {
+        //     path: "/formast",
+        //     name: "formast",
+        //     component: () => import("@/views/testformast.vue")
+        // },
+        // {
+        //     path: "/family",
+        //     name: "family",
+        //     component: () => import("@/views/testfamily.vue")
+        // },
+        {
             path: "/table",
-            component: () => import("@c/table.vue"),
+            component: () => import("@c/Table.vue"),
             // redirect: '/table/template1',
             children: [
                 {

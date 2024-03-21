@@ -3,8 +3,9 @@
         width: 120px;
         height: 180px;
         background: purple;
-        animation: move 4s infinite ease-in-out;
+        animation: move 1s infinite linear both alternate;
         position: absolute;
+        left: 50%;
     }
 
 
@@ -16,22 +17,19 @@
     @keyframes move {
         0% {
             z-index: 1;
+            transform: scale(1.1,0.9) translateY(-120px);
         }
 
-        12.5% {
-            transform: translate(150px)
-        }
 
-        25% {
-            z-index: -1;
-            transform: translate(0px)
+        50% {
+            transform: translateY(70px)
         }
 
         100% {
             z-index: 0;
-            transform: translate(0px);
+            transform: scale(0.9,1.1) translateY(0px);
         }
     }
 </style>
-<div></div>
-<div></div>
+<div class="box"></div>
+<!-- <div></div> -->

@@ -40,5 +40,5 @@ obj[Symbol.iterator] = function() {
 };
 
 for (value of obj) {
-    console.log(value);
+    console.log('gogo', value);
 }

@@ -9,7 +9,10 @@ Vue.config.productionTip = false
 Vue.use(element);
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.prototype.$http = Axios;
-new Vue({
+let vm = new Vue({
     router,
     render: h => h(App),
 }).$mount('#app');
+
+console.log('vm', vm);
+

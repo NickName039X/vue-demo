@@ -26,6 +26,10 @@ let a = {
 a.bar()  //undefined
 
 (function foo() {
-    foo = 10  // 由于foo在函数中只为可读，因此赋值无效
-    console.log(foo)
+    // foo = 10  // 由于foo在函数中只为可读，因此赋值无效
+    console.log(typeof foo, foo)
+    var desc = Object.getOwnPropertyDescriptors(foo);//获取对象的属性描述符号
+    var desc1 = Object.getOwnPropertyNames(foo);
+    console.log(desc);
+    console.log(desc1);
 }()) 

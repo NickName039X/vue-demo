@@ -1,42 +1,23 @@
 <template>
     <div class="A">
-        <B :top="top" />
-        <button @click="change">click me</button>
+        <Formast/>
     </div>
 </template>
 <script>
-import B from "./b.vue";
+import Formast from "./Formast.vue";
 export default {
     name: "",
-    components: { B },
+    components: { Formast },
     props: [""],
     data() {
         return {
-            top: {
-                name: "fangsheng",
-                age: 18
-            }
         };
     },
     watch: {},
     created() {},
     beforeMount() {},
     mounted() {},
-    methods: {
-        change() {
-            this.top.name = '小米';
-            // this.top = {
-            //     ...this.top,
-            //     age: 20
-            // };
-        }
-    },
-    computed: {}
 };
 </script>
 <style lang="scss" scoped>
-.A {
-    background: pink;
-    padding: 20px;
-}
 </style>

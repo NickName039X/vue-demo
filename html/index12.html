@@ -1,0 +1,15 @@
+<ul id="menu">
+    <li>产品</li>
+    <li>服务</li>
+    <li>联系我</li>
+</ul>
+
+<script>
+    let menu = document.getElementById('menu');
+    // 创建一个新的li节点
+    let li = document.createElement('li');
+    li.textContent = '首页';
+
+    // 在第一个元素之前插入它
+    menu.insertBefore(li, menu.firstChild);
+</script>
