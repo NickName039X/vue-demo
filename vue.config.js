@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/pro' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
     outputDir: 'dist',
     assetsDir: 'static',
     filenameHashing: true,
@@ -104,7 +104,7 @@ module.exports = {
         // css预设器配置项
         loaderOptions: {
             sass: {
-                prependData: `@import "@/styles/entry.scss";`  // 
+                prependData: `@import "@/styles/entry.scss";`  //
             },
             css: {
 

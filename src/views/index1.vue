@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div>
-            {{ title }}77
+            {{ title }}
         </div>
         <el-table :data="tableData" border style="width: 50%">
             <el-table-column fixed prop="date" label="日1期" width="150">

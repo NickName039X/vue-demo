@@ -30,6 +30,11 @@ const router = new Router({
             component: () => import("@/views/index3.vue")
         },
         {
+            path: "/index4",
+            name: "index4",
+            component: () => import("@/views/index4.vue")
+        },
+        {
             path: "/schema",
             name: "schema",
             component: () => import("@/views/schema.vue")
