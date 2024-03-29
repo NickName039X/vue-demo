@@ -3,23 +3,6 @@
 
 const { reject } = require("core-js/fn/promise");
 
-// const { reject } = require("core-js/fn/promise");
-
-// const p = new Promise((resolve, reject) => {
-//       const timeout = 3000;
-//       setInterval(() => {
-
-//       }, 1000);
-// })
-
-// const abortWrapper = (p1) => {
-//       let abort;
-//       const p2 = new Promise((resolve, reject) => abort = reject)
-//       const p = Promise.race([p1, p2]);
-//       p.abort = abort;
-//       return p;
-// }
-
 let p = new Promise((resolve, reject) => {
       resolve(1);
 });

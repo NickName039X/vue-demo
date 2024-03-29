@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    我是A页面
+    <div id="btn">跳转链接</div>
+    <a href="B.html" target="_blank" rel="opener">link</a>
+    <div id="setting">设置</div>
+    <!-- 方案一：通过a标签跳转且设置了新开页面的跳转，如果需要复制sessionStorage则需要设置rel为opener -->
+</body>
+</html>
+<script>
+    window.sessionStorage.setItem('time',new Date())
+    document.getElementById('btn').addEventListener('click',(e) => {
+        window.open('./B.html')
+        // 方案二：通过window.open打开，也能复制sessionStorage
+    })
+
+    document.getElementById('setting').addEventListener('click', e => {
+        window.sessionStorage.setItem('age','18')
+    })
+
+</script>

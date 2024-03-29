@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    我是B页面
+    <div id="fetch">获取</div>
+</body>
+
+</html>
+<script>
+    window.sessionStorage.setItem('time', 'today')
+    document.getElementById('fetch').addEventListener('click', (e) => {
+        console.log('age', window.sessionStorage.getItem('age'));
+
+    })
+</script>
