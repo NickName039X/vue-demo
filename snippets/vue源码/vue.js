@@ -715,10 +715,7 @@
 
   var uid = 0;
 
-
-
   /**
-   * observable 可观察的对象
    * A dep is an observable that can have multiple
    * directives subscribing to it.
    */

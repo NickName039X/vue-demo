@@ -35,6 +35,11 @@ const router = new Router({
             component: () => import("@/views/index4.vue")
         },
         {
+            path: "/index5",
+            name: "index5",
+            component: () => import("@/views/index5.vue")
+        },
+        {
             path: "/schema",
             name: "schema",
             component: () => import("@/views/schema.vue")

@@ -14,7 +14,6 @@
   </div>
 </template>
 <script>
-import abc from "./a.vue";
 
 export default {
   name: "index",

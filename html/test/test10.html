@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Media query example</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="boxes box1">
+            <h1>First Box</h1>
+            <p>
+                Information in the first box
+            </p>
+        </div>
+        <div class="boxes box2">
+            <h1>Second Box</h1>
+            <p>
+                Information in the second box
+            </p>
+        </div>
+</body>
+
+</html>
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 980px;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+
+    @media only screen and (min-width: 320px) and (max-width: 576px) {
+        .container {
+            width: 100%;
+            padding-left: 23px;
+            flex-direction: column;
+        }
+
+        .boxes {
+            width: 100%;
+        }
+    }
+</style>
